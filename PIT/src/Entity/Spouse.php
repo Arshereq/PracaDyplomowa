@@ -16,6 +16,9 @@ class Spouse
     #[ORM\OneToOne(inversedBy: 'Spouse_id', cascade: ['persist', 'remove'])]
     private ?User $User_id = null;
 
+    #[ORM\OneToOne(inversedBy: 'Spouse_id', cascade: ['persist', 'remove'])]
+    private ?PersonDetail $Person_Detail_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Spouse
     public function setUserId(?User $User_id): self
     {
         $this->User_id = $User_id;
+
+        return $this;
+    }
+
+    public function getPersonDetailId(): ?PersonDetail
+    {
+        return $this->Person_Detail_id;
+    }
+
+    public function setPersonDetailId(?PersonDetail $Person_Detail_id): self
+    {
+        $this->Person_Detail_id = $Person_Detail_id;
 
         return $this;
     }

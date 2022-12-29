@@ -56,6 +56,12 @@ class PersonDetail
     #[ORM\OneToOne(inversedBy: 'Person_detail_id', cascade: ['persist', 'remove'])]
     private ?User $User = null;
 
+    #[ORM\OneToOne(mappedBy: 'Person_detail_id', cascade: ['persist', 'remove'])]
+    private ?Children $Children_id = null;
+
+    #[ORM\OneToOne(mappedBy: 'Person_Detail_id', cascade: ['persist', 'remove'])]
+    private ?Spouse $Spouse_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -225,6 +231,50 @@ class PersonDetail
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getChildrenId(): ?Children
+    {
+        return $this->Children_id;
+    }
+
+    public function setChildrenId(?Children $Children_id): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($Children_id === null && $this->Children_id !== null) {
+            $this->Children_id->setPersonDetailId(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($Children_id !== null && $Children_id->getPersonDetailId() !== $this) {
+            $Children_id->setPersonDetailId($this);
+        }
+
+        $this->Children_id = $Children_id;
+
+        return $this;
+    }
+
+    public function getSpouseId(): ?Spouse
+    {
+        return $this->Spouse_id;
+    }
+
+    public function setSpouseId(?Spouse $Spouse_id): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($Spouse_id === null && $this->Spouse_id !== null) {
+            $this->Spouse_id->setPersonDetailId(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($Spouse_id !== null && $Spouse_id->getPersonDetailId() !== $this) {
+            $Spouse_id->setPersonDetailId($this);
+        }
+
+        $this->Spouse_id = $Spouse_id;
 
         return $this;
     }
