@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: 'Już jest stworzone konto na tym e-mailu, spróbuj innego')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -28,6 +28,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToOne(mappedBy: 'User', cascade: ['persist', 'remove'])]
+    private ?PersonDetail $Person_detail_id = null;
+
+    #[ORM\OneToOne(mappedBy: 'User_id', cascade: ['persist', 'remove'])]
+    private ?Spouse $Spouse_id = null;
+
+    #[ORM\OneToOne(mappedBy: 'User_id', cascade: ['persist', 'remove'])]
+    private ?Children $Children_id = null;
 
     public function getId(): ?int
     {
@@ -97,5 +106,71 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPersonDetailId(): ?PersonDetail
+    {
+        return $this->Person_detail_id;
+    }
+
+    public function setPersonDetailId(?PersonDetail $Person_detail_id): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($Person_detail_id === null && $this->Person_detail_id !== null) {
+            $this->Person_detail_id->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($Person_detail_id !== null && $Person_detail_id->getUser() !== $this) {
+            $Person_detail_id->setUser($this);
+        }
+
+        $this->Person_detail_id = $Person_detail_id;
+
+        return $this;
+    }
+
+    public function getSpouseId(): ?Spouse
+    {
+        return $this->Spouse_id;
+    }
+
+    public function setSpouseId(?Spouse $Spouse_id): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($Spouse_id === null && $this->Spouse_id !== null) {
+            $this->Spouse_id->setUserId(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($Spouse_id !== null && $Spouse_id->getUserId() !== $this) {
+            $Spouse_id->setUserId($this);
+        }
+
+        $this->Spouse_id = $Spouse_id;
+
+        return $this;
+    }
+
+    public function getChildrenId(): ?Children
+    {
+        return $this->Children_id;
+    }
+
+    public function setChildrenId(?Children $Children_id): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($Children_id === null && $this->Children_id !== null) {
+            $this->Children_id->setUserId(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($Children_id !== null && $Children_id->getUserId() !== $this) {
+            $Children_id->setUserId($this);
+        }
+
+        $this->Children_id = $Children_id;
+
+        return $this;
     }
 }
