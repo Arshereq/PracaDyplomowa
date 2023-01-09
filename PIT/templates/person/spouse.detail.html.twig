@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spouse_detail_form{% endblock %}
+
+{% block body %}
+    {% include('base.html.twig') %}
+    <form action="/spouse_detail" method="post">
+        <label for="name">Imię:</label><br>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="surname">Nazwisko:</label><br>
+        <input type="text" id="surname" name="surname"><br>
+
+        <label for="pesel">PESEL:</label><br>
+        <input type="text" id="pesel" name="pesel"><br>
+
+        <label for="birth_date">Data urodzenia:</label><br>
+        <input type="date" id="birth_date" name="birth_date"><br>
+
+        <label for="country">Kraj:</label><br>
+        <input type="text" id="country" name="country"><br>
+
+        <label for="voivodeship">Województwo:</label><br>
+        <input type="text" id="voivodeship" name="voivodeship"><br>
+
+        <label for="town">Miasto:</label><br>
+        <input type="text" id="town" name="town"><br>
+
+        <label for="commune">Gmina:</label><br>
+        <input type="text" id="commune" name="commune"><br>
+
+        <label for="county">Powiat:</label><br>
+        <input type="text" id="county" name="county"><br>
+
+        <label for="street">Ulica:</label><br>
+        <input type="text" id="street" name="street"><br>
+
+        <label for="house_number">Numer domu:</label><br>
+        <input type="text" id="house_number" name="house_number"><br>
+
+        <label for="apartment_number">Numer lokalu:</label><br>
+        <input type="text" id="apartment_number" name="apartment_number"><br>
+
+        <label for="zip_code">Kod pocztowy:</label><br>
+        <input type="text" id="zip_code" name="zip_code"><br>
+
+        <button type="submit" value="Wyślij" href="/user">Zatwierdź</button>
+    </form>
+{% endblock %}

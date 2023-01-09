@@ -33,11 +33,11 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Hasło nie moze byc puste',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Twoje hasło nie posiada wymaganej liczby znaków {{ limit }}',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),

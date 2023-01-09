@@ -53,7 +53,8 @@ class PersonDetail
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Zip_code = null;
 
-    #[ORM\OneToOne(inversedBy: 'Person_detail_id', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'Person_detail_id', targetEntity: "User", cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(name: 'user_id',referencedColumnName: 'id', onDelete: 'SET NULL')]
     private ?User $User = null;
 
     #[ORM\OneToOne(mappedBy: 'Person_detail_id', cascade: ['persist', 'remove'])]

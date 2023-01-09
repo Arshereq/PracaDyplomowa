@@ -16,7 +16,8 @@ class Spouse
     #[ORM\OneToOne(inversedBy: 'Spouse_id', cascade: ['persist', 'remove'])]
     private ?User $User_id = null;
 
-    #[ORM\OneToOne(inversedBy: 'Spouse_id', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'Spouse_id', targetEntity: 'PersonDetail', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(name: 'person_detail_id_id',referencedColumnName: 'id', onDelete: 'SET NULL')]
     private ?PersonDetail $Person_Detail_id = null;
 
     public function getId(): ?int
@@ -47,4 +48,5 @@ class Spouse
 
         return $this;
     }
+
 }

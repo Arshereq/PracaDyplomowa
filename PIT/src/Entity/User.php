@@ -29,13 +29,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\OneToOne(mappedBy: 'User', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'User', targetEntity: "PersonDetail", cascade: ['persist', 'remove'])]
     private ?PersonDetail $Person_detail_id = null;
 
-    #[ORM\OneToOne(mappedBy: 'User_id', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'User_id', targetEntity: "Spouse", cascade: ['persist', 'remove'])]
     private ?Spouse $Spouse_id = null;
 
-    #[ORM\OneToOne(mappedBy: 'User_id', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'User_id', targetEntity: "Children", cascade: ['persist', 'remove'])]
     private ?Children $Children_id = null;
 
     public function getId(): ?int

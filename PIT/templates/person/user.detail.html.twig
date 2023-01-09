@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User_detail{% endblock %}
+
+{% block body %}
+    {% include('base.html.twig') %}
+
+    <h1>Dane Użytkownika </h1>
+    <p>Imie: {{ personDetail.name|default('brak danych') }}</p>
+    <p>Nazwisko: {{ personDetail.surname |default('brak danych') }}</p>
+{#    <p>Data urodzenia: {{ personDetail.birth_date|default('brak danych') }}</p>#}
+    <p>PESEL: {{ personDetail.pesel |default('brak danych')  }}</p>
+    <p>Kraj: {{ personDetail.country |default('brak danych') }}</p>
+    <p>Województwo: {{ personDetail.voivodeship |default('brak danych') }}</p>
+    <p>Miasto: {{ personDetail.town |default('brak danych') }}</p>
+    <p>Gmina: {{ personDetail.commune |default('brak danych') }}</p>
+    <p>Powiat: {{ personDetail.county |default('brak danych') }}</p>
+    <p>Ulica: {{ personDetail.street |default('brak danych') }}</p>
+    <p>Numer domu: {{ personDetail.housenumber |default('brak danych') }}</p>
+    <p>Numer lokalu: {{ personDetail.apartmentnumber |default('brak danych') }}</p>
+    <p>Kod pocztowy: {{ personDetail.zipcode |default('brak danych') }}</p>
+
+    <h2>Dane Współmałżonka/Współmałżonki</h2>
+{#    {{ dump(spouseDetail.personDetailId.name) }}#}
+    <p>Imie: {{ spouseDetail.personDetailId.name |default('brak danych')}}</p>
+    <p>Nazwisko: {{ spouseDetail.personDetailId.surname |default('brak danych')}}</p>
+{#        <p>Data urodzenia: {{ spouseDetail.personDetailId.birth_date|default('brak danych') }}</p>#}
+    <p>PESEL: {{ spouseDetail.personDetailId.pesel |default('brak danych')}}</p>
+    <p>Kraj: {{ spouseDetail.personDetailId.country |default('brak danych')}}</p>
+    <p>Województwo: {{ spouseDetail.personDetailId.voivodeship |default('brak danych')}}</p>
+    <p>Miasto: {{ spouseDetail.personDetailId.town |default('brak danych')}}</p>
+    <p>Gmina: {{ spouseDetail.personDetailId.commune |default('brak danych')}}</p>
+    <p>Powiat: {{ spouseDetail.personDetailId.county |default('brak danych')}}</p>
+    <p>Ulica: {{ spouseDetail.personDetailId.street |default('brak danych')}}</p>
+    <p>Numer domu: {{ spouseDetail.personDetailId.housenumber |default('brak danych')}}</p>
+    <p>Numer lokalu: {{ spouseDetail.personDetailId.apartmentnumber |default('brak danych')}}</p>
+    <p>Kod pocztowy: {{ spouseDetail.personDetailId.zipcode |default('brak danych')}}</p>
+
+    <button><a href="/person_detail_add">Uzupełnij dane osobowe</a></button>
+    <br>
+    <button><a href="/spouse_detail_add">Dodaj Współmałżonka/Współmałżonkę</a></button>
+    <br>
+    <button><a>Dodaj Dziecko/Dzieci</a></button>
+    <br>
+{% endblock %}

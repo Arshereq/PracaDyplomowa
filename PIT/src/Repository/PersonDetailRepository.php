@@ -40,7 +40,7 @@ class PersonDetailRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return PersonDetail[] Returns an array of PersonDetail objects
+//     * @return UserDetailController[] Returns an array of UserDetailController objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class PersonDetailRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?PersonDetail
+//    public function findOneBySomeField($value): ?UserDetailController
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')
