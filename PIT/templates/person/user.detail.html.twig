@@ -5,41 +5,94 @@
 {% block body %}
     {% include('base.html.twig') %}
 
-    <h1>Dane Użytkownika </h1>
-    <p>Imie: {{ personDetail.name|default('brak danych') }}</p>
-    <p>Nazwisko: {{ personDetail.surname |default('brak danych') }}</p>
-{#    <p>Data urodzenia: {{ personDetail.birth_date|default('brak danych') }}</p>#}
-    <p>PESEL: {{ personDetail.pesel |default('brak danych')  }}</p>
-    <p>Kraj: {{ personDetail.country |default('brak danych') }}</p>
-    <p>Województwo: {{ personDetail.voivodeship |default('brak danych') }}</p>
-    <p>Miasto: {{ personDetail.town |default('brak danych') }}</p>
-    <p>Gmina: {{ personDetail.commune |default('brak danych') }}</p>
-    <p>Powiat: {{ personDetail.county |default('brak danych') }}</p>
-    <p>Ulica: {{ personDetail.street |default('brak danych') }}</p>
-    <p>Numer domu: {{ personDetail.housenumber |default('brak danych') }}</p>
-    <p>Numer lokalu: {{ personDetail.apartmentnumber |default('brak danych') }}</p>
-    <p>Kod pocztowy: {{ personDetail.zipcode |default('brak danych') }}</p>
+{#    <h1>Dane Użytkownika </h1>#}
+{#    <p><strong>Imie:</strong> {{ personDetail.name|default('brak danych') }}</p>#}
+{#    <p><strong>Nazwisko:</strong> {{ personDetail.surname |default('brak danych') }}</p>#}
+{#    <p><strong>Data urodzenia:</strong> {{ personDetail.birth_date|default('brak danych') }}</p>#}
+{#    <p><strong>PESEL:</strong> {{ personDetail.pesel |default('brak danych')  }}</p>#}
+{#    <p><strong>Kraj:</strong> {{ personDetail.country |default('brak danych') }}</p>#}
+{#    <p><strong>Województwo:</strong> {{ personDetail.voivodeship |default('brak danych') }}</p>#}
+{#    <p><strong>Miasto:</strong> {{ personDetail.town |default('brak danych') }}</p>#}
+{#    <p><strong>Gmina:</strong> {{ personDetail.commune |default('brak danych') }}</p>#}
+{#    <p><strong>Powiat:</strong> {{ personDetail.county |default('brak danych') }}</p>#}
+{#    <p><strong>Ulica:</strong> {{ personDetail.street |default('brak danych') }}</p>#}
+{#    <p><strong>Numer domu:</strong> {{ personDetail.housenumber |default('brak danych') }}</p>#}
+{#    <p><strong>Numer lokalu:</strong> {{ personDetail.apartmentnumber |default('brak danych') }}</p>#}
+{#    <p><strong>Kod pocztowy:</strong> {{ personDetail.zipcode |default('brak danych') }}</p>#}
 
-    <h2>Dane Współmałżonka/Współmałżonki</h2>
+{#    <h2>Dane Współmałżonka/Współmałżonki</h2>#}
 {#    {{ dump(spouseDetail.personDetailId.name) }}#}
-    <p>Imie: {{ spouseDetail.personDetailId.name |default('brak danych')}}</p>
-    <p>Nazwisko: {{ spouseDetail.personDetailId.surname |default('brak danych')}}</p>
+{#    <p>Imie: {{ spouseDetail.personDetailId.name |default('brak danych')}}</p>#}
+{#    <p>Nazwisko: {{ spouseDetail.personDetailId.surname |default('brak danych')}}</p>#}
 {#        <p>Data urodzenia: {{ spouseDetail.personDetailId.birth_date|default('brak danych') }}</p>#}
-    <p>PESEL: {{ spouseDetail.personDetailId.pesel |default('brak danych')}}</p>
-    <p>Kraj: {{ spouseDetail.personDetailId.country |default('brak danych')}}</p>
-    <p>Województwo: {{ spouseDetail.personDetailId.voivodeship |default('brak danych')}}</p>
-    <p>Miasto: {{ spouseDetail.personDetailId.town |default('brak danych')}}</p>
-    <p>Gmina: {{ spouseDetail.personDetailId.commune |default('brak danych')}}</p>
-    <p>Powiat: {{ spouseDetail.personDetailId.county |default('brak danych')}}</p>
-    <p>Ulica: {{ spouseDetail.personDetailId.street |default('brak danych')}}</p>
-    <p>Numer domu: {{ spouseDetail.personDetailId.housenumber |default('brak danych')}}</p>
-    <p>Numer lokalu: {{ spouseDetail.personDetailId.apartmentnumber |default('brak danych')}}</p>
-    <p>Kod pocztowy: {{ spouseDetail.personDetailId.zipcode |default('brak danych')}}</p>
+{#    <p>PESEL: {{ spouseDetail.personDetailId.pesel |default('brak danych')}}</p>#}
+{#    <p>Kraj: {{ spouseDetail.personDetailId.country |default('brak danych')}}</p>#}
+{#    <p>Województwo: {{ spouseDetail.personDetailId.voivodeship |default('brak danych')}}</p>#}
+{#    <p>Miasto: {{ spouseDetail.personDetailId.town |default('brak danych')}}</p>#}
+{#    <p>Gmina: {{ spouseDetail.personDetailId.commune |default('brak danych')}}</p>#}
+{#    <p>Powiat: {{ spouseDetail.personDetailId.county |default('brak danych')}}</p>#}
+{#    <p>Ulica: {{ spouseDetail.personDetailId.street |default('brak danych')}}</p>#}
+{#    <p>Numer domu: {{ spouseDetail.personDetailId.housenumber |default('brak danych')}}</p>#}
+{#    <p>Numer lokalu: {{ spouseDetail.personDetailId.apartmentnumber |default('brak danych')}}</p>#}
+{#    <p>Kod pocztowy: {{ spouseDetail.personDetailId.zipcode |default('brak danych')}}</p>#}
 
-    <button><a href="/person_detail_add">Uzupełnij dane osobowe</a></button>
-    <br>
-    <button><a href="/spouse_detail_add">Dodaj Współmałżonka/Współmałżonkę</a></button>
-    <br>
-    <button><a>Dodaj Dziecko/Dzieci</a></button>
-    <br>
+{#    <button><a href="/person_detail_add">Uzupełnij dane osobowe</a></button>#}
+{#    <br>#}
+{#    <button><a href="/spouse_detail_add">Dodaj Współmałżonka/Współmałżonkę</a></button>#}
+{#    <br>#}
+{#    <button><a>Dodaj Dziecko/Dzieci</a></button>#}
+{#    <br>#}
+    <section class="vh-100" style="background-color: #2779e2;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-white mb-4">Informacje o użytkowniku</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <p><strong>Imie:</strong> {{ personDetail.name|default('brak danych') }}</p>
+                            <p><strong>Nazwisko:</strong> {{ personDetail.surname |default('brak danych') }}</p>
+                            {#    <p><strong>Data urodzenia:</strong> {{ personDetail.birth_date|default('brak danych') }}</p>#}
+                            <p><strong>PESEL:</strong> {{ personDetail.pesel |default('brak danych')  }}</p>
+                            <p><strong>Kraj:</strong> {{ personDetail.country |default('brak danych') }}</p>
+                            <p><strong>Województwo:</strong> {{ personDetail.voivodeship |default('brak danych') }}</p>
+                            <p><strong>Miasto:</strong> {{ personDetail.town |default('brak danych') }}</p>
+                            <p><strong>Gmina:</strong> {{ personDetail.commune |default('brak danych') }}</p>
+                            <p><strong>Powiat:</strong> {{ personDetail.county |default('brak danych') }}</p>
+                            <p><strong>Ulica:</strong> {{ personDetail.street |default('brak danych') }}</p>
+                            <p><strong>Numer domu:</strong> {{ personDetail.housenumber |default('brak danych') }}</p>
+                            <p><strong>Numer lokalu:</strong> {{ personDetail.apartmentnumber |default('brak danych') }}</p>
+                            <p><strong>Kod pocztowy:</strong> {{ personDetail.zipcode |default('brak danych') }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/person_detail_add" class="btn btn-primary">Uzupełnij dane osobowe</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-white mb-4">Informacje o współmałżonku</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <p><strong>Imie:</strong> {{ spouseDetail.personDetailId.name|default('brak danych') }}</p>
+                            <p><strong>Nazwisko:</strong> {{ spouseDetail.personDetailId.surname |default('brak danych') }}</p>
+                            {#    <p><strong>Data urodzenia:</strong> {{ spouseDetail.personDetailId.birth_date|default('brak danych') }}</p>#}
+                            <p><strong>PESEL:</strong> {{ spouseDetail.personDetailId.pesel |default('brak danych')  }}</p>
+                            <p><strong>Kraj:</strong> {{ spouseDetail.personDetailId.country |default('brak danych') }}</p>
+                            <p><strong>Województwo:</strong> {{ spouseDetail.personDetailId.voivodeship |default('brak danych') }}</p>
+                            <p><strong>Miasto:</strong> {{ spouseDetail.personDetailId.town |default('brak danych') }}</p>
+                            <p><strong>Gmina:</strong> {{ spouseDetail.personDetailId.commune |default('brak danych') }}</p>
+                            <p><strong>Powiat:</strong> {{ spouseDetail.personDetailId.county |default('brak danych') }}</p>
+                            <p><strong>Ulica:</strong> {{ spouseDetail.personDetailId.street |default('brak danych') }}</p>
+                            <p><strong>Numer domu:</strong> {{ spouseDetail.personDetailId.housenumber |default('brak danych') }}</p>
+                            <p><strong>Numer lokalu:</strong> {{ spouseDetail.personDetailId.apartmentnumber |default('brak danych') }}</p>
+                            <p><strong>Kod pocztowy:</strong> {{ spouseDetail.personDetailId.zipcode |default('brak danych') }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/spouse_detail_add" class="btn btn-primary">Dodaj Współmałżonka/Współmałżonkę</a>
+                            <a href="#" class="btn btn-primary">Dodaj dziecko/dzieci</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

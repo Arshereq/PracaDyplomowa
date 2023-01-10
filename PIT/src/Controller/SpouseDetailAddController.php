@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Security;
 
 class SpouseDetailAddController extends AbstractController
 {
-    #[Route(path: '/spouse_detail_add',name: 'app_person_detail_add')]
+    #[Route(path: '/spouse_detail_add',name: 'app_spouse_detail_add')]
     public function Spouse_detail_add(Security $security){
         $user = $security->getUser();
         if(!$user){

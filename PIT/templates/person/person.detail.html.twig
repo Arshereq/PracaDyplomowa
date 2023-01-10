@@ -4,46 +4,192 @@
 
 {% block body %}
     {% include('base.html.twig') %}
-    <form action="/person_detail" method="post">
-        <label for="name">Imię:</label><br>
-        <input type="text" id="name" name="name"><br>
+    <section class="vh-200" style="background-color: #2779e2;">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-9">
+                    <h1 class="text-white mb-4">Wprowadź dane osobowe</h1>
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body">
+                            <form action="/person_detail" method="post" >
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
 
-        <label for="surname">Nazwisko:</label><br>
-        <input type="text" id="surname" name="surname"><br>
+                                        <h6 class="mb-0">Imię</h6>
 
-        <label for="pesel">PESEL:</label><br>
-        <input type="text" id="pesel" name="pesel"><br>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
 
-        <label for="birth_date">Data urodzenia:</label><br>
-        <input type="date" id="birth_date" name="birth_date"><br>
+                                        <input class="form-control" type="text" id="name" name="name" class="form-control " placeholder="Wprowadź imię">
 
-        <label for="country">Kraj:</label><br>
-        <input type="text" id="country" name="country"><br>
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
 
-        <label for="voivodeship">Województwo:</label><br>
-        <input type="text" id="voivodeship" name="voivodeship"><br>
+                                        <h6 class="mb-0">Nazwisko</h6>
 
-        <label for="town">Miasto:</label><br>
-        <input type="text" id="town" name="town"><br>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
 
-        <label for="commune">Gmina:</label><br>
-        <input type="text" id="commune" name="commune"><br>
+                                        <input class="form-control " type="text" id="surname" name="surname" placeholder="Wprowadź nazwisko"><br>
 
-        <label for="county">Powiat:</label><br>
-        <input type="text" id="county" name="county"><br>
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
 
-        <label for="street">Ulica:</label><br>
-        <input type="text" id="street" name="street"><br>
+                                        <h6 class="mb-0">PESEL</h6>
 
-        <label for="house_number">Numer domu:</label><br>
-        <input type="text" id="house_number" name="house_number"><br>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
 
-        <label for="apartment_number">Numer lokalu:</label><br>
-        <input type="text" id="apartment_number" name="apartment_number"><br>
+                                        <input class="form-control" type="text" id="pesel" name="pesel" placeholder="Wprowadź PESEL"><br>
 
-        <label for="zip_code">Kod pocztowy:</label><br>
-        <input type="text" id="zip_code" name="zip_code"><br>
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
 
-        <button type="submit" value="Wyślij" href="/user">Zatwierdź</button>
-    </form>
+                                        <h6 class="mb-0">Data urodzenia</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="date" id="birth_date" name="birth_date" placeholder="Wprowadź Data urodzenia"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Kraj</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="text" id="country" name="country" placeholder="Wprowadź Kraj"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Województwo</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="text" id="voivodeship" name="voivodeship" placeholder="Wprowadź Województwo"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Miasto</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="text" id="town" name="town" placeholder="Wprowadź Miasto"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Gmina</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="text" id="commune" name="commune" placeholder="Wprowadź Gmina"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Powiat</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="text" id="county" name="county" placeholder="Wprowadź Powiat"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Ulica</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="text" id="street" name="street" placeholder="Wprowadź Ulica"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Numer domu</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="text" id="house_number" name="house_number" placeholder="Wprowadź Numer domu"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Numer lokalu</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="text" id="apartment_number" name="apartment_number" placeholder="Wprowadź Numer lokalu"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Kod pocztowy</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input class="form-control" type="text" id="zip_code" name="zip_code" placeholder="Wprowadź Kod pocztowy"><br>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+                                <div class="px-5 py-4">
+                                    <button type="submit" class="btn btn-primary" value="Wyślij" href="/user" >Zatwierdź</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 {% endblock %}
