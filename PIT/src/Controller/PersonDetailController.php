@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\PersonDetail;
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,7 +25,6 @@ class PersonDetailController extends AbstractController
     {
 
         $user = $this->getUser();
-        $userid =$user->getId();
         $name = $request->request->get('name');
         $surname = $request->request->get('surname');
         $birth_date = new DateTimeImmutable($request->request->get('birth_date'));

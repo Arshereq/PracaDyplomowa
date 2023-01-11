@@ -2,8 +2,8 @@ controllers:
     resource: ../src/Controller/
     type: attribute
 person_detail:
-    path: /user/detail/
-    controller: App\Controller\PersonDetailController
+    path: /person_detail
+    controller: App\Controller\PersonDetailController::Person_detail
 spouse_detail:
     path: /user/detail/
     controller: App\Controller\SpouseDetailController
