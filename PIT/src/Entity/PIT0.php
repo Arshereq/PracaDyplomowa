@@ -16,11 +16,11 @@ class PIT0
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'pIT0', targetEntity: User::class)]
-    private Collection $User;
-
-    #[ORM\OneToMany(mappedBy: 'pIT0', targetEntity: Spouse::class)]
-    private Collection $Spouse;
+//    #[ORM\OneToMany(mappedBy: 'pIT0', targetEntity: User::class)]
+//    private Collection $User;
+//
+//    #[ORM\OneToMany(mappedBy: 'pIT0', targetEntity: Spouse::class)]
+//    private Collection $Spouse;
 
     #[ORM\Column(nullable: true)]
     private ?float $user_donations_organization = null;

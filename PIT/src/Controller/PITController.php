@@ -16,5 +16,18 @@ class PITController extends AbstractController
            'user' => $user,
         ]);
     }
+    #[Route(path: '/PIT-0', name: 'PIT-0')]
+    public function PIT_0(Security $security)
+    {
+        $user = $security->getUser();
+        $personDetail=$user->getPersonDetailId();
+        $spouseDetail=$user->getSpouseId();
 
+        return $this->render('PIT/pit0.form.html.twig',[
+            'user' => $user,
+            'personDetail' => $personDetail,
+            'spouseDetail' => $spouseDetail,
+        ]);
+
+    }
 }

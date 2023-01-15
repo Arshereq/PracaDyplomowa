@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PIT-0{% endblock %}
+
+{% block body %}
+    {% include('base.html.twig') %}
+    <h1>HELLO</h1>
+    <form method="post">
+        <label for="first_name">Imie podatnika:</label>
+        <input type="text" id="first_name" name="first_name"><br>
+
+        <label for="last_name">Nazwisko podatnika:</label>
+        <input type="text" id="last_name" name="last_name"><br>
+
+        <label for="spouse_name">Imie malzonka:</label>
+        <input type="text" id="spouse_name" name="spouse_name"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}
