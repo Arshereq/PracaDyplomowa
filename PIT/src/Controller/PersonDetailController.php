@@ -57,7 +57,6 @@ class PersonDetailController extends AbstractController
 
         $this->entityManager->persist($person_detail);
         $this->entityManager->flush();
-
         return $this->redirectToRoute('person_detail',[
         ]);
     }

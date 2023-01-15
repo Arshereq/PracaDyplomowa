@@ -17,13 +17,13 @@ class PersonDetail
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $Surname = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $birth_date = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $PESEL = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -53,14 +53,14 @@ class PersonDetail
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Zip_code = null;
 
-    #[ORM\OneToOne(inversedBy: 'Person_detail_id', targetEntity: "User", cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'Person_detail_id', targetEntity: "User", cascade: ['remove'])]
     #[ORM\JoinColumn(name: 'user_id',referencedColumnName: 'id', onDelete: 'SET NULL')]
     private ?User $User = null;
 
-    #[ORM\OneToOne(mappedBy: 'Person_detail_id', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'Person_detail_id', cascade: ['remove'])]
     private ?Children $Children_id = null;
 
-    #[ORM\OneToOne(mappedBy: 'Person_Detail_id', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'Person_Detail_id', cascade: ['remove'])]
     private ?Spouse $Spouse_id = null;
 
     public function getId(): ?int
@@ -85,7 +85,7 @@ class PersonDetail
         return $this->Surname;
     }
 
-    public function setSurname(string $Surname): self
+    public function setSurname(?string $Surname): self
     {
         $this->Surname = $Surname;
 
@@ -109,7 +109,7 @@ class PersonDetail
         return $this->PESEL;
     }
 
-    public function setPESEL(int $PESEL): self
+    public function setPESEL(?int $PESEL): self
     {
         $this->PESEL = $PESEL;
 
