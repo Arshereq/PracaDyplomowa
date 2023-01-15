@@ -38,6 +38,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'User_id', targetEntity: "Children", cascade: ['remove'])]
     private ?Children $Children_id = null;
 
+    #[ORM\ManyToOne(inversedBy: 'User')]
+    private ?PIT0 $pIT0 = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +173,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->Children_id = $Children_id;
+
+        return $this;
+    }
+
+    public function getPIT0(): ?PIT0
+    {
+        return $this->pIT0;
+    }
+
+    public function setPIT0(?PIT0 $pIT0): self
+    {
+        $this->pIT0 = $pIT0;
 
         return $this;
     }

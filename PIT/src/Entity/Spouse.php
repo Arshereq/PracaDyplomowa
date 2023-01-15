@@ -20,6 +20,9 @@ class Spouse
     #[ORM\JoinColumn(name: 'person_detail_id_id',referencedColumnName: 'id', onDelete: 'SET NULL')]
     private ?PersonDetail $Person_Detail_id = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Spouse')]
+    private ?PIT0 $pIT0 = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Spouse
     public function setPersonDetailId(?PersonDetail $Person_Detail_id): self
     {
         $this->Person_Detail_id = $Person_Detail_id;
+
+        return $this;
+    }
+
+    public function getPIT0(): ?PIT0
+    {
+        return $this->pIT0;
+    }
+
+    public function setPIT0(?PIT0 $pIT0): self
+    {
+        $this->pIT0 = $pIT0;
 
         return $this;
     }
