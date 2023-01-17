@@ -109,11 +109,11 @@ class PITController extends AbstractController
         $pit0 -> setUserReliefReffered(floatval($user_relief_reffered));
         $pit0 -> setUserOtherReliefFromTax(floatval($user_other_relief_from_tax));
         $pit0 -> setUserTotalTax(floatval($user_total_tax));
-        $pit0 -> setUserChildren1PESEL($user_children1_PESEL);
+        $pit0 -> setUserChildren1PESEL(intval($user_children1_PESEL));
         $pit0 -> setUserChildren1Surname($user_children1_surname);
         $pit0 -> setUserChildren1Name($user_children1_name);
         $pit0 -> setUserChildren1BirthDate($user_children1_birth_date);
-        $pit0 -> setUserChildren1NumberOfMonths($user_children1_number_of_months);
+        $pit0 -> setUserChildren1NumberOfMonths(intval($user_children1_number_of_months));
         $pit0 -> setUserChildren1ChildTaxDeduction(floatval($user_children1_child_tax_deduction));
 
         $pit0 -> setSpouseDonationsOrganization(floatval($spouse_dontations_organization));
