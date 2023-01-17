@@ -181,6 +181,15 @@ class PIT0
     #[ORM\Column(nullable: true)]
     private ?float $spouse_children_child_tax_deduction = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $spouse_other_relief_from_tax = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $spouse_children1_child_tax_deduction = null;
+
+    #[ORM\ManyToOne(inversedBy: 'pit0')]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->User = new ArrayCollection();
@@ -884,6 +893,37 @@ class PIT0
     public function setSpouseChildrenChildTaxDeduction(?float $spouse_children_child_tax_deduction): self
     {
         $this->spouse_children_child_tax_deduction = $spouse_children_child_tax_deduction;
+
+        return $this;
+    }
+
+    public function getSpouseOtherReliefFromTax(): ?float
+    {
+        return $this->spouse_other_relief_from_tax;
+    }
+
+    public function setSpouseOtherReliefFromTax(?float $spouse_other_relief_from_tax): self
+    {
+        $this->spouse_other_relief_from_tax = $spouse_other_relief_from_tax;
+
+        return $this;
+    }
+
+    public function getSpouseChildren1ChildTaxDeduction(): ?float
+    {
+        return $this->spouse_children1_child_tax_deduction;
+    }
+
+    public function setSpouseChildren1ChildTaxDeduction(?float $spouse_children1_child_tax_deduction): self
+    {
+        $this->spouse_children1_child_tax_deduction = $spouse_children1_child_tax_deduction;
+
+        return $this;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

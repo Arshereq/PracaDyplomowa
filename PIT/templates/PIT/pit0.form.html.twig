@@ -4,18 +4,372 @@
 
 {% block body %}
     {% include('base.html.twig') %}
-    <h1>HELLO</h1>
-    <form method="post">
-        <label for="first_name">Imie podatnika:</label>
-        <input type="text" id="first_name" name="first_name"><br>
-
-        <label for="last_name">Nazwisko podatnika:</label>
-        <input type="text" id="last_name" name="last_name"><br>
-
-        <label for="spouse_name">Imie malzonka:</label>
-        <input type="text" id="spouse_name" name="spouse_name"><br>
-
-        <input type="submit" value="Submit">
-    </form>
+    <section class="vh" style="background-color: #2779e2;">
+        <div class="container">
+            <div class="row">
+                <form action="/PIT-0" method="post">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">Podatnik</div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <h2>Obliczenia od dochodu(przychodu):</h2>
+                                    <label>Organizacjom na prowadzoną przez nie działalność pożytku publicznego w sferze
+                                        zadań publicznych o kótrych mowa w art.26 ust.1 pkt9 lit. a ustawy:
+                                        <input class="form-control" type="text" id="user_donations_organization"
+                                               name="user_donations_organization" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Na cele kultu religijnego, o których mowa w art.26 ust 1 pkt 9lit. b ustawy:
+                                        <input class="form-control" type="text" id="user_donations_religious"
+                                               name="user_donations_religious" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Na cele krwiodawstwa, o których mowa w art.26 ust.1 pkt 9 lit.c ustawy:
+                                        <input class="form-control" type="text" id="user_donations_blood"
+                                               name="user_donations_blood" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Na cele kształcenia zawodowego:
+                                        <input class="form-control" type="text" id="user_donations_vocational_training"
+                                               name="user_donations_vocational_training" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <label>Na cele odbudowy Palacu Saskiego:
+                                        <input class="form-control" type="text" id="user_donations_reconstruction"
+                                               name="user_donations_reconstruction" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Na przeciwdziałanie COVID-19:
+                                        <input class="form-control" type="text" id="user_donations_covid"
+                                               name="user_donations_covid" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>W formie tabletów i laptopów, o których mowa w art. 52x ustawy i art 57e
+                                        ustawy o ryczałcie:
+                                        <input class="form-control" type="text" id="user_donations_laptop"
+                                               name="user_donations_covid" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Darowizny wynikajace z odrebnych ustaw:
+                                        <input class="form-control" type="text" id="user_donations_from_separate_laws"
+                                               name="user_donations_from_separate_laws" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Wydatki na cele rehabilitacyjne oraz wydatki zwiazane z ulatwieniem
+                                        wykonywania czynności życiowych:
+                                        <input class="form-control" type="text" id="user_expanse_rehabilitation"
+                                               name="user_expanse_rehabilitation" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Zwrot nienależnie pobranych swiadczen które uprzednio, które uprzednio
+                                        zwiekszyły dochód podlegający opodatkowaniu, jeżeli nie zostały one potrącone
+                                        przez płatnika:
+                                        <input class="form-control" type="text"
+                                               id="user_return_unduly_collected_benefits"
+                                               name="user_return_unduly_collected_benefits" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Wydatki z tytułu użytkowania sieci Internet:
+                                        <input class="form-control" type="text" id="user_expense_internet"
+                                               name="user_expense_internet" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Wydatki na realizacje przedsięwzięcia termomodernizacyjnego:
+                                        <input class="form-control" type="text" id="user_expense_thermal_modernization"
+                                               name="user_expense_thermal_modernization" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Wpłaty na indywidualne konto zabezpieczenia emerytalnego:
+                                        <input class="form-control" type="text" id="user_payments_individual_pension"
+                                               name="user_payments_individual_pension" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Inne ulgi niewymienione:
+                                        <input class="form-control" type="text" id="user_other_relief_from_income"
+                                               name="user_other_relief_from_income" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Razem odliczenia od dochodu:
+                                        <input class="form-control" type="text" id="user_total_income"
+                                               name="user_total_income" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <h2>Odliczenia od podatku:</h2>
+                                    <label>Ulga za wyszkolenie uczniów lub z tytułu zatrudnienia pracowników w celu
+                                        przygotowania zawodowego, przyznana na podstawie decyzji:
+                                        <input class="form-control" type="text" id="user_relief_for_training_students"
+                                               name="user_relief_for_training_students" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Składki na ubezpieczenie społeczne opłacone przez osobę prowadzącą
+                                        gospodarstwo domowe z tytułu zawarcia umowy aktywizacyjnej z osobą bezrobotną:
+                                        <input class="form-control" type="text" id="user_social_security"
+                                               name="user_social_security" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Ulga na dzieci:
+                                        <input class="form-control" type="text" id="user_relief_for_children"
+                                               name="user_relief_for_children" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Ulga, o której mowa w art.27g ustawy:
+                                        <input class="form-control" type="text" id="user_relief_reffered"
+                                               name="user_relief_reffered" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Inne ulgi, niewymienione:
+                                        <input class="form-control" type="text" id="user_other_relief_from_tax"
+                                               name="user_other_relief_from_tax" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Razem odliczenia od podatku:
+                                        <input class="form-control" type="text" id="user_total_tax"
+                                               name="user_total_tax" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <h2>Informacja o dzieciach wykazanych:</h2>
+                                    <label>PESEL:
+                                        <input class="form-control" type="text" id="user_children1_pesel"
+                                               name="user_children1_pesel" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Imię:
+                                        <input class="form-control" type="text" id="user_children_name"
+                                               name="user_children_name" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Nazwisko:
+                                        <input class="form-control" type="text" id="user_children1_surname"
+                                               name="user_children1_surname" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Data urodzenia:
+                                        <input class="form-control" type="text" id="user_children1_birth_date"
+                                               name="user_children1_birth_date" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Liczba miesięcy, za które przysługuje odliczenie:
+                                        <input class="form-control" type="text" id="user_children1_number_of_months"
+                                               name="user_children1_number_of_months" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Przysługujące odliczenie z tytułu ulgi na dzieci:
+                                        <input class="form-control" type="text" id="user_children1_child_tax_deduction"
+                                               name="user_children1_child_tax_deduction" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">Małżonek</div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <h2>Obliczenia od dochodu(przychodu):</h2>
+                                    <label>Organizacjom na prowadzoną przez nie działalność pożytku publicznego w sferze
+                                        zadań publicznych o kótrych mowa w art.26 ust.1 pkt9 lit. a ustawy:
+                                        <input class="form-control" type="text" id="spouse_donations_organization"
+                                               name="spouse_donations_organization" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Na cele kultu religijnego, o których mowa w art.26 ust 1 pkt 9lit. b ustawy:
+                                        <input class="form-control" type="text" id="spouse_donations_religious"
+                                               name="spouse_donations_religious" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Na cele krwiodawstwa, o których mowa w art.26 ust.1 pkt 9 lit.c ustawy:
+                                        <input class="form-control" type="text" id="spouse_donations_blood"
+                                               name="spouse_donations_blood" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Na cele kształcenia zawodowego:
+                                        <input class="form-control" type="text" id="spouse_donations_vocational_training"
+                                               name="spouse_donations_vocational_training" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <label>Na cele odbudowy Palacu Saskiego:
+                                        <input class="form-control" type="text" id="spouse_donations_reconstruction"
+                                               name="spouse_donations_reconstruction" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Na przeciwdziałanie COVID-19:
+                                        <input class="form-control" type="text" id="spouse_donations_covid"
+                                               name="spouse_donations_covid" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>W formie tabletów i laptopów, o których mowa w art. 52x ustawy i art 57e
+                                        ustawy o ryczałcie:
+                                        <input class="form-control" type="text" id="spouse_donations_laptop"
+                                               name="spouse_donations_covid" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Darowizny wynikajace z odrebnych ustaw:
+                                        <input class="form-control" type="text" id="spouse_donations_from_separate_laws"
+                                               name="spouse_donations_from_separate_laws" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Wydatki na cele rehabilitacyjne oraz wydatki zwiazane z ulatwieniem
+                                        wykonywania czynności życiowych:
+                                        <input class="form-control" type="text" id="spouse_expanse_rehabilitation"
+                                               name="spouse_expanse_rehabilitation" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Zwrot nienależnie pobranych swiadczen które uprzednio, które uprzednio
+                                        zwiekszyły dochód podlegający opodatkowaniu, jeżeli nie zostały one potrącone
+                                        przez płatnika:
+                                        <input class="form-control" type="text"
+                                               id="spouse_return_unduly_collected_benefits"
+                                               name="spouse_return_unduly_collected_benefits" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Wydatki z tytułu użytkowania sieci Internet:
+                                        <input class="form-control" type="text" id="spouse_expense_internet"
+                                               name="spouse_expense_internet" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Wydatki na realizacje przedsięwzięcia termomodernizacyjnego:
+                                        <input class="form-control" type="text" id="spouse_expense_thermal_modernization"
+                                               name="spouse_expense_thermal_modernization" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Wpłaty na indywidualne konto zabezpieczenia emerytalnego:
+                                        <input class="form-control" type="text" id="spouse_payments_individual_pension"
+                                               name="spouse_payments_individual_pension" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Inne ulgi niewymienione:
+                                        <input class="form-control" type="text" id="spouse_other_relief_from_income"
+                                               name="spouse_other_relief_from_income" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Razem odliczenia od dochodu:
+                                        <input class="form-control" type="text" id="spouse_total_income"
+                                               name="spouse_total_income" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <h2>Odliczenia od podatku:</h2>
+                                    <label>Ulga za wyszkolenie uczniów lub z tytułu zatrudnienia pracowników w celu
+                                        przygotowania zawodowego, przyznana na podstawie decyzji:
+                                        <input class="form-control" type="text" id="spouse_relief_for_training_students"
+                                               name="spouse_relief_for_training_students" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Składki na ubezpieczenie społeczne opłacone przez osobę prowadzącą
+                                        gospodarstwo domowe z tytułu zawarcia umowy aktywizacyjnej z osobą bezrobotną:
+                                        <input class="form-control" type="text" id="spouse_social_security"
+                                               name="spouse_social_security" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Ulga na dzieci:
+                                        <input class="form-control" type="text" id="spouse_relief_for_children"
+                                               name="spouse_relief_for_children" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Ulga, o której mowa w art.27g ustawy:
+                                        <input class="form-control" type="text" id="spouse_relief_reffered"
+                                               name="spouse_relief_reffered" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Inne ulgi, niewymienione:
+                                        <input class="form-control" type="text" id="spouse_other_relief_from_tax"
+                                               name="spouse_other_relief_from_tax" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Razem odliczenia od podatku:
+                                        <input class="form-control" type="text" id="spouse_total_tax"
+                                               name="spouse_total_tax" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <h2>Informacja o dzieciach wykazanych:</h2>
+                                    <label>PESEL:
+                                        <input class="form-control" type="text" id="spouse_children1_pesel"
+                                               name="spouse_children1_pesel" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Imię:
+                                        <input class="form-control" type="text" id="spouse_children_name"
+                                               name="spouse_children_name" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Nazwisko:
+                                        <input class="form-control" type="text" id="spouse_children1_surname"
+                                               name="spouse_children1_surname" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Data urodzenia:
+                                        <input class="form-control" type="text" id="spouse_children1_birth_date"
+                                               name="spouse_children1_birth_date" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Liczba miesięcy, za które przysługuje odliczenie:
+                                        <input class="form-control" type="text" id="spouse_children1_number_of_months"
+                                               name="spouse_children1_number_of_months" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Przysługujące odliczenie z tytułu ulgi na dzieci:
+                                        <input class="form-control" type="text" id="spouse_children1_child_tax_deduction"
+                                               name="spouse_children1_child_tax_deduction" class="form-control "
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center w-100">
+                        <button type="submit" class="btn btn-success" href="/PIT">Zatwierdź</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

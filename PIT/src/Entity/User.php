@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -40,6 +42,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'User')]
     private ?PIT0 $pIT0 = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: PIT0::class)]
+    private Collection $pit0;
+
+    public function __construct()
+    {
+        $this->pit0 = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -185,6 +195,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPIT0(?PIT0 $pIT0): self
     {
         $this->pIT0 = $pIT0;
+
+        return $this;
+    }
+
+    public function addPit0(PIT0 $pit0): self
+    {
+        if (!$this->pit0->contains($pit0)) {
+            $this->pit0->add($pit0);
+            $pit0->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePit0(PIT0 $pit0): self
+    {
+        if ($this->pit0->removeElement($pit0)) {
+            // set the owning side to null (unless already changed)
+            if ($pit0->getUser() === $this) {
+                $pit0->setUser(null);
+            }
+        }
 
         return $this;
     }
