@@ -1,0 +1,261 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pit-37 Informacje końcowe{% endblock %}
+
+{% block body %}
+    {% include('base.html.twig') %}
+    <section class="vh" style="background-color: #2779e2;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-white mb-4">Informacje o Podatniku</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <p><strong>Imie:</strong> {{ personDetail.name|default('brak danych') }}</p>
+                            <p><strong>Nazwisko:</strong> {{ personDetail.surname |default('brak danych') }}</p>
+                            {#    <p><strong>Data urodzenia:</strong> {{ personDetail.birth_date|default('brak danych') }}</p>#}
+                            <p><strong>PESEL:</strong> {{ personDetail.pesel |default('brak danych')  }}</p>
+                            <p><strong>Kraj:</strong> {{ personDetail.country |default('brak danych') }}</p>
+                            <p><strong>Województwo:</strong> {{ personDetail.voivodeship |default('brak danych') }}</p>
+                            <p><strong>Miasto:</strong> {{ personDetail.town |default('brak danych') }}</p>
+                            <p><strong>Gmina:</strong> {{ personDetail.commune |default('brak danych') }}</p>
+                            <p><strong>Powiat:</strong> {{ personDetail.county |default('brak danych') }}</p>
+                            <p><strong>Ulica:</strong> {{ personDetail.street |default('brak danych') }}</p>
+                            <p><strong>Numer domu:</strong> {{ personDetail.housenumber |default('brak danych') }}</p>
+                            <p><strong>Numer lokalu:</strong> {{ personDetail.apartmentnumber |default('brak danych') }}</p>
+                            <p><strong>Kod pocztowy:</strong> {{ personDetail.zipcode |default('brak danych') }}</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <label> <strong>Przychody zwolnione od podatku na podstawie art.21 ust.1 pkt 148:</strong>
+                                <p>Przychody ze stosunku służbowego, stosunku pracy, pracy nakładczej, spółdzielczego stosunku pracy: {{ lastPit37.getUserServiceIncome()|default('0') }}</p>
+                                <p>Przychody z umów zlecenia, o których mowa w art.13 pkt 8 ustawy: {{ lastPit37.getUserContractRevenues()|default('brak danych') }}</p>
+                                <p>Przychody z praktyk absolwenckich i staży uczniowskich: {{ lastPit37.getUserIncomeFromGraduate()|default('brak danych') }}</p>
+                            </label>
+                            <label><strong>Dochody i straty ze źródeł przychodów</strong></label>
+                            <table class="table table-bordered border-primary">
+                                <thead>
+                                <tr>
+                                    <th>Źródła przychodów</th>
+                                    <th>Przychód</th>
+                                    <th>Koszty uzyskania przychodów</th>
+                                    <th>Dochód</th>
+                                    <th>Strata</th>
+                                    <th>Zaliczka pobrana przez płatnika</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Stosunek służbowy,praca nakładcza, spóldzielczy stosunek pracy</td>
+                                    <td>{{ lastPit37.getUserEmploymentIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserEmploymentCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserEmploymentProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserEmploymentLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserEmploymentAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Emerytury-renty oraz inne krajowe świadczenia</td>
+                                    <td>{{ lastPit37.getUserPensionIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserPensionCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserPensionProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserPensionLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserPensionAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Działalność wykonywana osobiście</td>
+                                    <td>{{ lastPit37.getUserActivitiesPerformedIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserActivitiesPerformedCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserActivitiesPerformedProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserActivitiesPerformedLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserActivitiesPerformedAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Prawa autorskie i inne prawa</td>
+                                    <td>{{ lastPit37.getUserCopyrightIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserCopyrightCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserCopyrightProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserCopyrightLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserCopyrightAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Inne źródła</td>
+                                    <td>{{ lastPit37.getUserOtherIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserOtherCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserOtherProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserOtherLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserOtherAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Razem</td>
+                                    <td>{{ lastPit37.getUserTotalIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserTotalCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserTotalProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserTotalLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getUserTotalAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <label><strong>Odliczenia od dochodu</strong>
+                                <p>Składki na ubezpieczenia społeczne: {{ lastPit37.getUserSocialSecurity()|default('0') }} </p>
+                                <p>Odliczenia - wykazane z pit0: {{ lastPit37.getUserPit0Deductions()|default('0') }} </p>
+                            </label>
+                            <label><strong>Odliczenia od podatku</strong>
+                                <p>Składki na ubezpieczenie zdrowotne: {{ lastPit37.getUserHealthInsurance()|default('0') }}</p>
+                                <p>Odliczenia - wykazane z pit0: {{ lastPit37.getUserDeduction()|default('0') }} </p>
+                            </label>
+                            <label><strong>Dodatkowy zwrot z tytułu ulgi na dzieci</strong>
+                                <p>Składki na ubezpieczenia społeczne i zdrowotne: {{ lastPit37.getUserHealthInsurenceKid()|default('0') }}</p>
+                                <p>Różnica między kwotą przysługującego odliczenia a kwotą odliczoną w zeznaniu podatkowym: {{ lastPit37.getUserDifferenceBetween()|default('0') }}</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-white mb-4">Informacje o współmałżonku</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <p><strong>Imie:</strong> {{ spouseDetail.personDetailId.name|default('brak danych') }}</p>
+                            <p><strong>Nazwisko:</strong> {{ spouseDetail.personDetailId.surname |default('brak danych') }}</p>
+                            {#    <p><strong>Data urodzenia:</strong> {{ spouseDetail.personDetailId.birth_date|default('brak danych') }}</p>#}
+                            <p><strong>PESEL:</strong> {{ spouseDetail.personDetailId.pesel |default('brak danych')  }}</p>
+                            <p><strong>Kraj:</strong> {{ spouseDetail.personDetailId.country |default('brak danych') }}</p>
+                            <p><strong>Województwo:</strong> {{ spouseDetail.personDetailId.voivodeship |default('brak danych') }}</p>
+                            <p><strong>Miasto:</strong> {{ spouseDetail.personDetailId.town |default('brak danych') }}</p>
+                            <p><strong>Gmina:</strong> {{ spouseDetail.personDetailId.commune |default('brak danych') }}</p>
+                            <p><strong>Powiat:</strong> {{ spouseDetail.personDetailId.county |default('brak danych') }}</p>
+                            <p><strong>Ulica:</strong> {{ spouseDetail.personDetailId.street |default('brak danych') }}</p>
+                            <p><strong>Numer domu:</strong> {{ spouseDetail.personDetailId.housenumber |default('brak danych') }}</p>
+                            <p><strong>Numer lokalu:</strong> {{ spouseDetail.personDetailId.apartmentnumber |default('brak danych') }}</p>
+                            <p><strong>Kod pocztowy:</strong> {{ spouseDetail.personDetailId.zipcode |default('brak danych') }}</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <label> <strong>Przychody zwolnione od podatku na podstawie art.21 ust.1 pkt 148:</strong>
+                                <p>Przychody ze stosunku służbowego, stosunku pracy, pracy nakładczej, spółdzielczego stosunku pracy: {{ lastPit37.getSpouseServiceIncome()|default('0') }}</p>
+                                <p>Przychody z umów zlecenia, o których mowa w art.13 pkt 8 ustawy: {{ lastPit37.getSpouseContractRevenues()|default('brak danych') }}</p>
+                                <p>Przychody z praktyk absolwenckich i staży uczniowskich: {{ lastPit37.getSpouseIncomeFromGraduate()|default('brak danych') }}</p>
+                            </label>
+                            <label><strong>Dochody i straty ze źródeł przychodów</strong></label>
+                            <table class="table table-bordered border-primary">
+                                <thead>
+                                <tr>
+                                    <th>Źródła przychodów</th>
+                                    <th>Przychód</th>
+                                    <th>Koszty uzyskania przychodów</th>
+                                    <th>Dochód</th>
+                                    <th>Strata</th>
+                                    <th>Zaliczka pobrana przez płatnika</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Stosunek służbowy,praca nakładcza, spóldzielczy stosunek pracy</td>
+                                    <td>{{ lastPit37.getSpouseEmploymentIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseEmploymentCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseEmploymentProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseEmploymentLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseEmploymentAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Emerytury-renty oraz inne krajowe świadczenia</td>
+                                    <td>{{ lastPit37.getSpousePensionIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpousePensionCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpousePensionProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpousePensionLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpousePensionAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Działalność wykonywana osobiście</td>
+                                    <td>{{ lastPit37.getSpouseActivitiesPerformedIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseActivitiesPerformedCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseActivitiesPerformedProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseActivitiesPerformedLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseActivitiesPerformedAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Prawa autorskie i inne prawa</td>
+                                    <td>{{ lastPit37.getSpouseCopyrightIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseCopyrightCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseCopyrightProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseCopyrightLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseCopyrightAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Inne źródła</td>
+                                    <td>{{ lastPit37.getSpouseOtherIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseOtherCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseOtherProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseOtherLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseOtherAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Razem</td>
+                                    <td>{{ lastPit37.getSpouseTotalIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseTotalCostIncome()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseTotalProceeds()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseTotalLoss()|default('0') }}</td>
+                                    <td>{{ lastPit37.getSpouseTotalAdvancedPayment()|default('0') }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <label><strong>Odliczenia od dochodu</strong>
+                                <p>Składki na ubezpieczenia społeczne: {{ lastPit37.getSpouseSocialSecurity()|default('0') }} </p>
+                                <p>Odliczenia - wykazane z pit0: {{ lastPit37.getSpousePit0Deductions()|default('0') }} </p>
+                            </label>
+                            <label><strong>Odliczenia od podatku</strong>
+                                <p>Składki na ubezpieczenie zdrowotne: {{ lastPit37.getSpouseHealthInsurance()|default('0') }}</p>
+                                <p>Odliczenia - wykazane z pit0: {{ lastPit37.getSpouseDeduction()|default('0') }} </p>
+                            </label>
+                            <label><strong>Dodatkowy zwrot z tytułu ulgi na dzieci</strong>
+                                <p>Składki na ubezpieczenia społeczne i zdrowotne: {{ lastPit37.getSpouseHealthInsurenceKid()|default('0') }}</p>
+                                <p>Różnica między kwotą przysługującego odliczenia a kwotą odliczoną w zeznaniu podatkowym: {{ lastPit37.getSpouseDifferenceBetween()|default('0') }}</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 ">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h2 class="text-white mb-4">Wspólne informacje Podatnika/Małżonka</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <label><strong>Odliczenia od dochodu</strong>
+                                    <p>Ulga odsetkowa: {{ lastPit37.getInterestRelief()|default('0')}} </p>
+                                    <p>Dochód po odliczeniach: {{ lastPit37.getIncomeAfterDeductions()|default('0')}}</p>
+                                    <p>Odliczenia mieszkaniowe: {{ lastPit37.getHousingDeductionsFromIncome()|default('0')}}</p>
+                                </label>
+                                <label><strong>Obliczenia podatku</strong>
+                                    <p>Podstawa obliczenia podatku: {{ lastPit37.getBasisForTaxCalculation()|default('0')}}</p>
+                                    <p>Obliczony podatek: {{ lastPit37.getCalculatedTax()|default('0')}}</p>
+                                    <p>Doliczenia do podatku: {{ lastPit37.getTaxAdditions()|default('0')}}</p>
+                                </label>
+                                <label><strong>Odliczenia od podatku</strong>
+                                    <p>Podatek po odliczeniach: {{ lastPit37.getTaxAfterDeduction()|default('0')}}</p>
+                                    <p>Odliczenia mieszkaniowe: {{ lastPit37.getHousingDeductionsFromTax()|default('0')}}</p>
+                                </label>
+                                <label><strong>Obliczenie zobowiązania podatkowego</strong>
+                                    <p>Podatek należny: {{ lastPit37.getTaxDue()|default('0')}}</p>
+                                    <p>Różnica między podatkiem należnym a sumą zaliczek pobranych przez płatników do zapłaty: {{ lastPit37.getDifferenceBetweenTax()|default('0')}} </p>
+                                    <p>Różnica między sumą zaliczek pobranych przez płatników a podatkiem należnym nadpłata: {{ lastPit37.getDifferenceBetweenTaxSum()|default('0')}}</p>
+                                </label>
+                                <label><strong>Dodatkowy zwrot z tytułu ulgi na dzieci</strong>
+                                    <p>Przysługująca różnica: {{ lastPit37.getDueDifference()|default('0')}}</p>
+                                    <p>Łączny zwrot: {{ lastPit37.getConclusiveReturn()|default('0')}}</p>
+                                </label>
+                                <label><strong>Dochody</strong>
+                                    <p>Dochody: {{ lastPit37.getIncome()|default('0')}}</p>
+                                </label>
+                                <label><strong>Wniosek o przekazanie 1%podatku należnego na rzecz organizacji pożytku publicznego</strong>
+                                    <p>Numer Krs: {{ lastPit37.getKrsNumber()|default('0')}} </p>
+                                    <p>Wartosć przekazanego datku: {{ lastPit37.getKrsAmount()|default('0')}}</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{#    {{ dump(lastPit37.getSpouseTotalIncome()) }}#}
+{% endblock %}

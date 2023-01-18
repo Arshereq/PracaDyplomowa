@@ -263,6 +263,7 @@ class PITController extends AbstractController
         /*WRZUCANIE DO BAZY */
         $pit37 = new PIT37();
         $pit37 -> setUser($user);
+        $pit37 ->setTaxDue($tax_due);
         $pit37 -> setUserServiceIncome($user_service_income);
         $pit37 -> setUserContractRevenues($user_contract_revenues);
         $pit37 -> setUserIncomeFromGraduate($user_income_from_graduate);

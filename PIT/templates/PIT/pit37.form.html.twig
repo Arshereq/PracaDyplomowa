@@ -203,7 +203,7 @@
                                     <label>Składki na ubezpieczenie zdrowotne:
                                         <input class="form-control" type="number" id="user_health_insurance"
                                                name="user_health_insurance"
-                                               readonly>
+                                               onchange="calculateSum()">
                                     </label>
                                     <label>Odliczenia - wykazane w PIT-0
                                         <input class="form-control" type="number"
@@ -220,7 +220,7 @@
                                                type="number"
                                                id="user_health_insurance_kid"
                                                name="user_total_tax"
-                                               readonly>
+                                               onchange="calculateSum()">
                                     </label>
                                     <label>Różnica między kwotą przysługującego odliczenia a kwotą odliczoną w zeznaniu podatkowym:
                                         <input class="form-control" type="text" id="user_difference_between"
@@ -425,7 +425,7 @@
                                     <label>Składki na ubezpieczenie zdrowotne:
                                         <input class="form-control" type="number" id="spouse_health_insurance"
                                                name="spouse_health_insurance"
-                                               readonly>
+                                               onchange="calculateSum()">
                                     </label>
                                     <label>Odliczenia - wykazane w PIT-0
                                         <input class="form-control" type="number"
@@ -654,7 +654,7 @@
             var spouse_other_proceeds = document.getElementById("spouse_other_proceeds");
             spouse_other_proceeds.value=pomoc7;
 
-            var sum7 = pomoc+pomoc1+pomoc2+pomoc3;
+            var sum7 = pomoc4+pomoc5+pomoc6+pomoc7;
             document.getElementById("spouse_total_proceeds").value=sum7;
 
 
