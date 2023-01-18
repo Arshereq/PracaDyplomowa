@@ -274,6 +274,12 @@ class PIT37
     #[ORM\Column(nullable: true)]
     private ?float $krs_amount = null;
 
+    #[ORM\ManyToOne(inversedBy: 'pit37')]
+    private ?User $user = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $user_other_proceeds = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -1319,6 +1325,30 @@ class PIT37
     public function setKrsAmount(?float $krs_amount): self
     {
         $this->krs_amount = $krs_amount;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUserOtherProceeds(): ?float
+    {
+        return $this->user_other_proceeds;
+    }
+
+    public function setUserOtherProceeds(?float $user_other_proceeds): self
+    {
+        $this->user_other_proceeds = $user_other_proceeds;
 
         return $this;
     }

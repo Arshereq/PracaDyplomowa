@@ -1,0 +1,669 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PIT-37{% endblock %}
+
+{% block body %}
+    {% include('base.html.twig') %}
+
+    <section class="vh" style="background-color: #2779e2;">
+        <div class="container">
+            <div class="row">
+                <form action="/PIT-37" method="post">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">Podatnik</div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <h2>Przychody zwolnione od podatku na podstawie art.21 ust.1 pkt 148 ustawy</h2>
+                                    <label>Przychody ze stosunku służbowego, stosunku pracy, pracy nakładczej, spółdzielczego stosunku pracy
+                                        <input class="form-control" type="number"
+                                               id="user_service_income"
+                                               name="user_service_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Przychody z umów zlecenia, o których mowa w art.13 pkt 8 ustawy:
+                                        <input class="form-control" type="number" id="user_contract_revenues"
+                                               name="user_contract_revenues" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Przychody z praktyk absolwenckich i staży uczniowskich:
+                                        <input class="form-control" type="number" id="user_income_from_graduate"
+                                               name="user_income_from_graduate" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <h2>Dochody/Straty ze źródeł przychodów</h2>
+                                    <label>Stosunek służbowy, stosunek pracy, praca nakładcza, spółdzielczy stosunek pracy:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="user_employment_income"
+                                               name="user_employment_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszt uzyskania przychodów:</label>
+                                        <input class="form-control" type="number" id="user_employment_cost_income"
+                                               name="user_employment_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="user_employment_advance_payment"
+                                               name="user_employment_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="user_employment_proceeds"
+                                               name="user_employment_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" readonly>
+                                        <br>
+                                        <label>Strata:</label>
+                                        <input class="form-control" type="number" id="user_employments_loss"
+                                               name="user_employments_loss" value="0"
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Emerytury - renty oraz inne krajowe świadczenia o których mowa w art.34 ust.7 ustawy:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="user_pension_income"
+                                               name="user_pension_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="user_pension_advance_payment"
+                                               name="user_pension_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+
+                                    </label>
+                                    <br>
+                                    <label>Działalność wykonywana osobiście o której mowa w art.13 ustawy:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="user_activities_performed_income"
+                                               name="user_activities_performed_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszty uzyskania przychodów:</label>
+                                        <input class="form-control" type="number" id="user_activities_performed_cost_income"
+                                               name="user_activities_performed_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="user_activities_performed_advance_payment"
+                                               name="user_activities_performed_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="user_activities_performed_proceeds"
+                                               name="user_activities_performed_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Strata:</label>
+                                        <input class="form-control" type="number" id="user_activities_performed_loss"
+                                               name="user_activities_performed_loss" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Prawa autorskie i inne prawa, o których mowa w art.18 ustawy:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="user_copyright_income"
+                                               name="user_copyright_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszty uzyskania przychodów:</label>
+                                        <input class="form-control" type="number" id="user_copyright_cost_income"
+                                               name="user_copyright_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="user_copyright_advance_payment"
+                                               name="user_copyright_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="user_copyright_proceeds"
+                                               name="user_copyright_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Strata:</label>
+                                        <input class="form-control" type="number" id="user_copyright_loss"
+                                               name="user_copyright_loss" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Inne źródła, niewymienione:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="user_other_income"
+                                               name="user_other_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszty uzyskania przychodów:</label>
+                                        <input class="form-control" type="number" id="user_other_cost_income"
+                                               name="user_other_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="user_other_advance_payment"
+                                               name="user_other_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="user_other_proceeds"
+                                               name="user_other_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Strata:</label>
+                                        <input class="form-control" type="number" id="user_other_loss"
+                                               name="user_other_loss" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Razem:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="user_total_income"
+                                               name="user_total_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszty uzyskania przychodu:</label>
+                                        <input class="form-control" type="number" id="user_total_cost_income"
+                                               name="user_total_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="user_total_advance_payment"
+                                               name="user_total_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="user_total_proceeds"
+                                               name="user_total_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <h2>Odliczenia od Dochodu</h2>
+                                    <label>Składki na ubezpieczenia społeczne:
+                                        <input class="form-control" type="number"
+                                               id="user_social_security"
+                                               name="user_social_security"
+                                               value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Odliczenia - wykazane w pit-0
+                                        <input class="form-control" type="number" id="user_pit0_deductions"
+                                               name="user_pit0_deductions" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <h2>Odliczenia od podatku</h2>
+                                    <label>Składki na ubezpieczenie zdrowotne:
+                                        <input class="form-control" type="number" id="user_health_insurance"
+                                               name="user_health_insurance"
+                                               readonly>
+                                    </label>
+                                    <label>Odliczenia - wykazane w PIT-0
+                                        <input class="form-control" type="number"
+                                               id="user_deduction"
+                                               name="user_deduction"
+                                               value="0"
+                                               onchange="calculateSum()"
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <h2>Dodatkowy zwrot z tytułu ulgi na dzieci</h2>
+                                    <label>Składki na ubezpieczenie społeczne i zdrowotne:
+                                        <input class="form-control"
+                                               type="number"
+                                               id="user_health_insurance_kid"
+                                               name="user_total_tax"
+                                               readonly>
+                                    </label>
+                                    <label>Różnica między kwotą przysługującego odliczenia a kwotą odliczoną w zeznaniu podatkowym:
+                                        <input class="form-control" type="text" id="user_difference_between"
+                                               name="user_difference_between"
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">Małżonek</div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <h2>Przychody zwolnione od podatku na podstawie art.21 ust.1 pkt 148 ustawy</h2>
+                                    <label>Przychody ze stosunku służbowego, stosunku pracy, pracy nakładczej, spółdzielczego stosunku pracy
+                                        <input class="form-control" type="number"
+                                               id="spouse_service_income"
+                                               name="spouse_service_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Przychody z umów zlecenia, o których mowa w art.13 pkt 8 ustawy:
+                                        <input class="form-control" type="number" id="spouse_contract_revenues"
+                                               name="spouse_contract_revenues" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Przychody z praktyk absolwenckich i staży uczniowskich:
+                                        <input class="form-control" type="number" id="spouse_income_from_graduate"
+                                               name="spouse_income_from_graduate" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <h2>Dochody/Straty ze źródeł przychodów</h2>
+                                    <label>Stosunek służbowy, stosunek pracy, praca nakładcza, spółdzielczy stosunek pracy:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="spouse_employment_income"
+                                               name="spouse_employment_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszt uzyskania przychodów:</label>
+                                        <input class="form-control" type="number" id="spouse_employment_cost_income"
+                                               name="spouse_employment_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="spouse_employment_advance_payment"
+                                               name="spouse_employment_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="spouse_employment_proceeds"
+                                               name="spouse_employment_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" readonly>
+                                        <br>
+                                        <label>Strata:</label>
+                                        <input class="form-control" type="number" id="spouse_employments_loss"
+                                               name="spouse_employments_loss" value="0"
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <label>Emerytury - renty oraz inne krajowe świadczenia o których mowa w art.34 ust.7 ustawy:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="spouse_pension_income"
+                                               name="spouse_pension_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="spouse_pension_advance_payment"
+                                               name="spouse_pension_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+
+                                    </label>
+                                    <br>
+                                    <label>Działalność wykonywana osobiście o której mowa w art.13 ustawy:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="spouse_activities_performed_income"
+                                               name="spouse_activities_performed_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszty uzyskania przychodów:</label>
+                                        <input class="form-control" type="number" id="spouse_activities_performed_cost_income"
+                                               name="spouse_activities_performed_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="spouse_activities_performed_advance_payment"
+                                               name="spouse_activities_performed_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="spouse_activities_performed_proceeds"
+                                               name="spouse_activities_performed_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Strata:</label>
+                                        <input class="form-control" type="number" id="spouse_activities_performed_loss"
+                                               name="spouse_activities_performed_loss" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Prawa autorskie i inne prawa, o których mowa w art.18 ustawy:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="spouse_copyright_income"
+                                               name="spouse_copyright_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszty uzyskania przychodów:</label>
+                                        <input class="form-control" type="number" id="spouse_copyright_cost_income"
+                                               name="spouse_copyright_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="spouse_copyright_advance_payment"
+                                               name="spouse_copyright_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="spouse_copyright_proceeds"
+                                               name="spouse_copyright_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Strata:</label>
+                                        <input class="form-control" type="number" id="spouse_copyright_loss"
+                                               name="spouse_copyright_loss" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Inne źródła, niewymienione:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="spouse_other_income"
+                                               name="spouse_other_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszty uzyskania przychodów:</label>
+                                        <input class="form-control" type="number" id="spouse_other_cost_income"
+                                               name="spouse_other_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="spouse_other_advance_payment"
+                                               name="spouse_other_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="spouse_other_proceeds"
+                                               name="spouse_other_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Strata:</label>
+                                        <input class="form-control" type="number" id="spouse_other_loss"
+                                               name="spouse_other_loss" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Razem:
+                                        <br>
+                                        <label>Przychód:</label>
+                                        <input class="form-control" type="number" id="spouse_total_income"
+                                               name="spouse_total_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Koszty uzyskania przychodu:</label>
+                                        <input class="form-control" type="number" id="spouse_total_cost_income"
+                                               name="spouse_total_cost_income" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Zaliczka pobrana przez płatnika:</label>
+                                        <input class="form-control" type="number" id="spouse_total_advance_payment"
+                                               name="spouse_total_advance_payment" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        <br>
+                                        <label>Dochód:</label>
+                                        <input class="form-control" type="number" id="spouse_total_proceeds"
+                                               name="spouse_total_proceeds" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <h2>Odliczenia od Dochodu</h2>
+                                    <label>Składki na ubezpieczenia społeczne:
+                                        <input class="form-control" type="number"
+                                               id="spouse_social_security"
+                                               name="spouse_social_security"
+                                               value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <label>Odliczenia - wykazane w pit-0
+                                        <input class="form-control" type="number" id="spouse_pit0_deductions"
+                                               name="spouse_pit0_deductions" value="0"
+                                               placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                    </label>
+                                    <br>
+                                    <h2>Odliczenia od podatku</h2>
+                                    <label>Składki na ubezpieczenie zdrowotne:
+                                        <input class="form-control" type="number" id="spouse_health_insurance"
+                                               name="spouse_health_insurance"
+                                               readonly>
+                                    </label>
+                                    <label>Odliczenia - wykazane w PIT-0
+                                        <input class="form-control" type="number"
+                                               id="spouse_deduction"
+                                               name="spouse_deduction"
+                                               value="0"
+                                               onchange="calculateSum()"
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                    <br>
+                                    <h2>Dodatkowy zwrot z tytułu ulgi na dzieci</h2>
+                                    <label>Składki na ubezpieczenie społeczne i zdrowotne:
+                                        <input class="form-control"
+                                               type="number"
+                                               id="spouse_health_insurance_kid"
+                                               name="spouse_total_tax"
+                                               readonly>
+                                    </label>
+                                    <label>Różnica między kwotą przysługującego odliczenia a kwotą odliczoną w zeznaniu podatkowym:
+                                        <input class="form-control" type="text" id="spouse_difference_between"
+                                               name="spouse_difference_between"
+                                               placeholder="Wprowadź Wartość">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <div class="card">
+                                <div class="card-header">Wszystkie wyliczenia łączne (Podatnik i Małżonka)</div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <br>
+                                        <h2>Odliczenia od dochodu</h2>
+                                        <label>Dochód po odliczeniach:
+                                            <input class="form-control" type="number" id="income_after_deductions"
+                                                   name="income_after_deductions" value="0"
+                                                   placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        </label>
+                                        <h2>Obliczenie podatku</h2>
+                                        <label>Podstawa obliczenia podatku:
+                                            <input class="form-control" type="number" id="basis_for_tax_calculation"
+                                                   name="basis_for_tax_calculation" value="0"
+                                                   placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        </label>
+                                        <br>
+                                        <label>obliczony podatek:
+                                            <input class="form-control" type="number" id="calculated_tax"
+                                                   name="calculated_tax" value="0"
+                                                   placeholder="Wprowadź Wartość" onchange="calculateSum()">
+                                        </label>
+                                        <br>
+                                        <h2>Odliczenia od podatku</h2>
+                                        <label> Podatek po odliczeniach:
+                                            <input class="form-control"
+                                                   type="number"
+                                                   id="tax_after_deduction"
+                                                   name="tax_after_deduction"
+                                                   value="0"
+                                                   onchange="calculateSum()">
+                                        </label>
+                                        <br>
+                                        <h2>Obliczenia zobowiazania podatkowego</h2>
+                                        <label>Podatek należny:
+                                            <input class="form-control" type="number" id="tax_due"
+                                                   name="tax_due"
+                                                   value="0"
+                                                   onchange="calculateSum()">
+                                        </label>
+                                        <br>
+                                        <label>Różnica między podatkiem należnym a sumą zaliczek pobranych przez płatników do zapłaty
+                                            <input class="form-control" type="number" id="difference_between_tax"
+                                                   name="difference_between_tax"
+                                                   value="0"
+                                                   onchange="calculateSum()">
+                                        </label>
+                                        <br>
+                                        <label>Różnica między sumą zaliczek pobranych przez płatników a podatkiem należnym nadpłata
+                                            <input class="form-control" type="number" id="difference_between_tax_sum"
+                                                   name="difference_between_tax_sum"
+                                                   value="0"
+                                                   onchange="calculateSum()">
+                                        </label>
+                                        <h2>Dodatkowy zwrot z tytulu ulgi na dzieci</h2>
+                                        <br>
+                                        <label>Przysługująca różnica:
+                                            <input class="form-control" type="text" id="due_difference"
+                                                   name="due_difference"
+                                                   placeholder="Wprowadź Wartość">
+                                        </label>
+                                        <br>
+                                        <label>Łączny zwrot:
+                                            <input class="form-control" type="text" id="conclusive_return"
+                                                   name="conclusive_return"
+                                                   placeholder="Wprowadź Wartość">
+                                        </label>
+                                        <br>
+                                        <h2>Dochody(Przychody) wykazywane na podstawie art.45 ust.3c ustawy</h2>
+                                        <label>Dochody:
+                                            <input class="form-control" type="text" id="income"
+                                                   name="income"
+                                                   placeholder="Wprowadź Wartość">
+                                        </label>
+                                        <br>
+                                        <h2>Wniosek o przekazanie 1% podatku należnego na rzecz organizacji pożytku publicznego</h2>
+                                        <label>Numer KRS:
+                                            <input class="form-control" type="number" id="krs_number"
+                                                   name="krs_number"
+                                                   placeholder="Wprowadź Wartość">
+                                        </label>
+                                        <br>
+                                        <label>Wnioskowana kwota:
+                                            <input class="form-control" type="number" id="krs_amount"
+                                                   name="krs_amount"
+                                                   placeholder="Wprowadź Wartość">
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center w-100">
+                        <button type="submit" class="btn btn-success" href="/PIT">Zatwierdź</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        function calculateSum() {
+            /*Obliczanie dochody/straty - podatnik*/
+
+            /*Przychody*/
+            var user_employment_income = document.getElementById("user_employment_income").value;
+            var user_pension_income = document.getElementById("user_pension_income").value;
+            var user_activities_performed_income = document.getElementById("user_activities_performed_income").value;
+            var user_copyright_income = document.getElementById("user_copyright_income").value;
+            var user_other_income = document.getElementById("user_other_income").value;
+            var sum = parseFloat(user_employment_income)+parseFloat(user_pension_income)+parseFloat(user_activities_performed_income)+parseFloat(user_copyright_income)+parseFloat(user_other_income);
+            document.getElementById("user_total_income").value = sum;
+
+            /*Koszty uzyskania przychodu*/
+            var user_employment_cost_income = document.getElementById("user_employment_cost_income").value;
+            var user_activities_performed_cost_income = document.getElementById("user_activities_performed_cost_income").value;
+            var user_copyright_cost_income = document.getElementById("user_copyright_cost_income").value;
+            var user_other_cost_income = document.getElementById("user_other_cost_income").value;
+            var sum1 = parseFloat(user_employment_cost_income)+parseFloat(user_activities_performed_cost_income)+parseFloat(user_copyright_cost_income)+parseFloat(user_other_cost_income);
+            document.getElementById("user_total_cost_income").value=sum1;
+
+            /*Zaliczka pobrana przez płatnika*/
+            var user_employment_advance_payment = document.getElementById("user_employment_advance_payment").value;
+            var user_pension_advance_payment = document.getElementById("user_pension_advance_payment").value;
+            var user_activities_performed_advance_payment = document.getElementById("user_activities_performed_advance_payment").value;
+            var user_copyright_advance_payment = document.getElementById("user_copyright_advance_payment").value;
+            var user_other_advance_payment = document.getElementById("user_other_advance_payment").value;
+            var sum2 = parseFloat(user_employment_advance_payment)+parseFloat(user_pension_advance_payment)+parseFloat(user_activities_performed_advance_payment)+parseFloat(user_copyright_advance_payment)+parseFloat(user_other_advance_payment);
+            document.getElementById("user_total_advance_payment").value = sum2;
+
+            /*Dochód*/
+            /*dochod - stosunek sluzbowy*/
+            var pomoc = parseFloat(user_employment_income)-parseFloat(user_employment_cost_income);
+            var user_employment_proceeds = document.getElementById("user_employment_proceeds");
+            user_employment_proceeds.value=pomoc;
+            /*dochod - dzialalnosc wykonywana osobiscie*/
+            var pomoc1 = parseFloat(user_activities_performed_income)-parseFloat(user_activities_performed_cost_income);
+            var user_activities_performed_proceeds = document.getElementById("user_activities_performed_proceeds");
+            user_activities_performed_proceeds.value=pomoc1;
+            /*dochod - prawa autorskie*/
+            var pomoc2 = parseFloat(user_copyright_income)-parseFloat(user_copyright_cost_income);
+            var user_copyright_proceeds = document.getElementById("user_copyright_proceeds");
+            user_copyright_proceeds.value=pomoc2;
+            /*dochod - inne*/
+            var pomoc3 = parseFloat(user_other_income)-parseFloat(user_other_cost_income);
+            var user_other_proceeds = document.getElementById("user_other_proceeds");
+            user_other_proceeds.value=pomoc3;
+
+            var sum3 = pomoc+pomoc1+pomoc2+pomoc3;
+            document.getElementById("user_total_proceeds").value=sum3;
+
+
+            /*Obliczanie dochody/straty - małżonek*/
+
+            /*Przychody*/
+            var spouse_employment_income = document.getElementById("spouse_employment_income").value;
+            var spouse_pension_income = document.getElementById("spouse_pension_income").value;
+            var spouse_activities_performed_income = document.getElementById("spouse_activities_performed_income").value;
+            var spouse_copyright_income = document.getElementById("spouse_copyright_income").value;
+            var spouse_other_income = document.getElementById("spouse_other_income").value;
+            var sum4 = parseFloat(spouse_employment_income)+parseFloat(spouse_pension_income)+parseFloat(spouse_activities_performed_income)+parseFloat(spouse_copyright_income)+parseFloat(spouse_other_income);
+            document.getElementById("spouse_total_income").value = sum4;
+
+            /*Koszty uzyskania przychodu*/
+            var spouse_employment_cost_income = document.getElementById("spouse_employment_cost_income").value;
+            var spouse_activities_performed_cost_income = document.getElementById("spouse_activities_performed_cost_income").value;
+            var spouse_copyright_cost_income = document.getElementById("spouse_copyright_cost_income").value;
+            var spouse_other_cost_income = document.getElementById("spouse_other_cost_income").value;
+            var sum5 = parseFloat(spouse_employment_cost_income)+parseFloat(spouse_activities_performed_cost_income)+parseFloat(spouse_copyright_cost_income)+parseFloat(spouse_other_cost_income);
+            document.getElementById("spouse_total_cost_income").value=sum5;
+
+            /*Zaliczka pobrana przez płatnika*/
+            var spouse_employment_advance_payment = document.getElementById("spouse_employment_advance_payment").value;
+            var spouse_pension_advance_payment = document.getElementById("spouse_pension_advance_payment").value;
+            var spouse_activities_performed_advance_payment = document.getElementById("spouse_activities_performed_advance_payment").value;
+            var spouse_copyright_advance_payment = document.getElementById("spouse_copyright_advance_payment").value;
+            var spouse_other_advance_payment = document.getElementById("spouse_other_advance_payment").value;
+            var sum6 = parseFloat(spouse_employment_advance_payment)+parseFloat(spouse_pension_advance_payment)+parseFloat(spouse_activities_performed_advance_payment)+parseFloat(spouse_copyright_advance_payment)+parseFloat(spouse_other_advance_payment);
+            document.getElementById("spouse_total_advance_payment").value = sum6;
+
+            /*Dochód*/
+            /*dochod - stosunek sluzbowy*/
+            var pomoc4 = parseFloat(spouse_employment_income)-parseFloat(spouse_employment_cost_income);
+            var spouse_employment_proceeds = document.getElementById("spouse_employment_proceeds");
+            spouse_employment_proceeds.value=pomoc4;
+            /*dochod - dzialalnosc wykonywana osobiscie*/
+            var pomoc5 = parseFloat(spouse_activities_performed_income)-parseFloat(spouse_activities_performed_cost_income);
+            var spouse_activities_performed_proceeds = document.getElementById("spouse_activities_performed_proceeds");
+            spouse_activities_performed_proceeds.value=pomoc5;
+            /*dochod - prawa autorskie*/
+            var pomoc6 = parseFloat(spouse_copyright_income)-parseFloat(spouse_copyright_cost_income);
+            var spouse_copyright_proceeds = document.getElementById("spouse_copyright_proceeds");
+            spouse_copyright_proceeds.value=pomoc6;
+            /*dochod - inne*/
+            var pomoc7 = parseFloat(spouse_other_income)-parseFloat(spouse_other_cost_income);
+            var spouse_other_proceeds = document.getElementById("spouse_other_proceeds");
+            spouse_other_proceeds.value=pomoc7;
+
+            var sum7 = pomoc+pomoc1+pomoc2+pomoc3;
+            document.getElementById("spouse_total_proceeds").value=sum7;
+
+
+            /*SEKCJA - podatnik i małzonek*/
+
+            /*ODLICZENIA OD DOCHODU*/
+            /*dochod po odliczeniach */
+
+            /*OBLICZANIE PODATKU*/
+        }
+    </script>
+{% endblock %}

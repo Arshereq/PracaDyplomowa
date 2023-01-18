@@ -46,9 +46,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: PIT0::class)]
     private Collection $pit0;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: PIT37::class)]
+    private Collection $pit37;
+
     public function __construct()
     {
         $this->pit0 = new ArrayCollection();
+        $this->pit37 = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -215,6 +219,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($pit0->getUser() === $this) {
                 $pit0->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PIT37>
+     */
+    public function getPit37(): Collection
+    {
+        return $this->pit37;
+    }
+
+    public function addPit37(PIT37 $pit37): self
+    {
+        if (!$this->pit37->contains($pit37)) {
+            $this->pit37->add($pit37);
+            $pit37->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePit37(PIT37 $pit37): self
+    {
+        if ($this->pit37->removeElement($pit37)) {
+            // set the owning side to null (unless already changed)
+            if ($pit37->getUser() === $this) {
+                $pit37->setUser(null);
             }
         }
 

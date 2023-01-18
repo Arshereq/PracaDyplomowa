@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\PIT0;
+use App\Entity\PIT37;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -150,5 +151,224 @@ class PITController extends AbstractController
         return $this->render('PIT/pit0.form.html.twig',[
         ]);
 
+    }
+
+    #[Route(path:'/PIT-37', name:'PIT-37')]
+    public function PIT_37(Request $request)
+    {
+        /*Podatnik*/
+        $user = $this->getUser();
+        $user_service_income = $request -> request->get('user_service_income');
+        $user_contract_revenues = $request->request->get('user_contract_revenues');
+        $user_income_from_graduate = $request->request->get('user_income_from_graduate');
+        $user_employment_income = $request->request->get('user_employment_income');
+        $user_pension_income = $request->request->get('user_pension_income');
+        $user_activities_performed_income = $request->request->get('user_activities_performed_income');
+        $user_copyright_income = $request->request->get('user_copyright_income');
+        $user_other_income = $request->request->get('user_other_income');
+        $user_total_income = $request->request->get('user_total_income');
+        $user_employment_cost_income = $request->request->get('user_employment_cost_income');
+
+        $user_activities_performed_cost_income = $request->request->get('user_activities_performed_cost_income');
+        $user_copyright_cost_income = $request->request->get('user_copyright_cost_income');
+        $user_other_cost_income = $request->request->get('user_other_cost_income');
+        $user_total_cost_income = $request->request->get('user_total_cost_income');
+
+        $user_employment_advance_payment = $request->request->get('user_employment_advance_payment');
+        $user_pension_advance_payment = $request->request->get('user_pension_advance_payment');
+        $user_activities_performed_advance_payment = $request->request->get('user_activities_performed_advance_payment');
+        $user_copyright_advance_payment = $request->request->get('user_copyright_advance_payment');
+        $user_other_advance_payment = $request->request->get('user_other_advance_payment');
+        $user_total_advance_payment = $request->request->get('user_total_advance_payment');
+
+        $user_employment_proceeds = $request->request->get('user_employment_proceeds');
+        $user_pension_proceeds = $request->request->get('user_pension_proceeds');
+        $user_activities_performed_proceeds = $request->request->get('user_activities_performed_proceeds');
+        $user_copyright_proceeds = $request->request->get('user_copyright_proceeds');
+        $user_other_proceeds = $request->request->get('user_other_proceeds');
+        $user_total_proceeds = $request->request->get('user_total_proceeds');
+
+        $user_employment_loss = $request->request->get('user_employment_loss');
+        $user_activities_performed_loss = $request->request->get('user_activities_performed_loss');
+        $user_copyright_loss = $request->request->get('user_copyright_loss');
+        $user_other_loss = $request->request->get('user_other_loss');
+        $user_social_security = $request->request->get('user_social_security');
+        $user_pit0_deduction = $request->request->get('user_pit0_deduction');
+        $user_health_insurance = $request->request->get('user_health_insurance');
+        $user_deduction = $request->request->get('user_deduction');
+        $user_health_insurance_kid = $request->request->get('user_health_insurance_kid');
+        $user_difference_between = $request->request->get('user_difference_between');
+
+
+        /*MALZONEK*/
+        $spouse_service_income = $request -> request->get('spouse_service_income');
+        $spouse_contract_revenues = $request->request->get('spouse_contract_revenues');
+        $spouse_income_from_graduate = $request->request->get('spouse_income_from_graduate');
+        $spouse_employment_income = $request->request->get('spouse_employment_income');
+        $spouse_pension_income = $request->request->get('spouse_pension_income');
+        $spouse_activities_performed_income = $request->request->get('spouse_activities_performed_income');
+        $spouse_copyright_income = $request->request->get('spouse_copyright_income');
+        $spouse_other_income = $request->request->get('spouse_other_income');
+        $spouse_total_income = $request->request->get('spouse_total_income');
+        $spouse_employment_cost_income = $request->request->get('spouse_employment_cost_income');
+
+        $spouse_activities_performed_cost_income = $request->request->get('spouse_activities_performed_cost_income');
+        $spouse_copyright_cost_income = $request->request->get('spouse_copyright_cost_income');
+        $spouse_other_cost_income = $request->request->get('spouse_other_cost_income');
+        $spouse_total_cost_income = $request->request->get('spouse_total_cost_income');
+
+        $spouse_employment_advance_payment = $request->request->get('spouse_employment_advance_payment');
+        $spouse_pension_advance_payment = $request->request->get('spouse_pension_advance_payment');
+        $spouse_activities_performed_advance_payment = $request->request->get('spouse_activities_performed_advance_payment');
+        $spouse_copyright_advance_payment = $request->request->get('spouse_copyright_advance_payment');
+        $spouse_other_advance_payment = $request->request->get('spouse_other_advance_payment');
+        $spouse_total_advance_payment = $request->request->get('spouse_total_advance_payment');
+
+        $spouse_employment_proceeds = $request->request->get('spouse_employment_proceeds');
+        $spouse_pension_proceeds = $request->request->get('spouse_pension_proceeds');
+        $spouse_activities_performed_proceeds = $request->request->get('spouse_activities_performed_proceeds');
+        $spouse_copyright_proceeds = $request->request->get('spouse_copyright_proceeds');
+        $spouse_other_proceeds = $request->request->get('spouse_other_proceeds');
+        $spouse_total_proceeds = $request->request->get('spouse_total_proceeds');
+
+        $spouse_employment_loss = $request->request->get('spouse_employment_loss');
+        $spouse_activities_performed_loss = $request->request->get('spouse_activities_performed_loss');
+        $spouse_copyright_loss = $request->request->get('spouse_copyright_loss');
+        $spouse_other_loss = $request->request->get('spouse_other_loss');
+        $spouse_social_security = $request->request->get('spouse_social_security');
+        $spouse_pit0_deduction = $request->request->get('spouse_pit0_deduction');
+        $spouse_health_insurance = $request->request->get('spouse_health_insurance');
+        $spouse_deduction = $request->request->get('spouse_deduction');
+        $spouse_health_insurance_kid = $request->request->get('spouse_health_insurance_kid');
+        $spouse_difference_between = $request->request->get('spouse_difference_between');
+
+        /*CZESC WSPOLNA PODATNIKA I MALZONKA*/
+        $interest_relief = $request->request->get('interest_relief');
+        $income_after_deductions = $request->request->get('income_after_deductions');
+        $housing_deductions_from_income = $request->request->get('housing_deductions_from_income');
+        $basis_for_tax_calculation = $request->request->get('basis_for_tax_calculation');
+        $calculated_tax = $request->request->get('calculated_tax');
+        $tax_additions = $request->request->get('tax_additions');
+        $tax_after_deduction = $request->request->get('tax_after_deduction');
+        $housing_deductions_from_tax = $request->request->get('housing_deductions_from_tax');
+        $tax_due = $request->request->get('tax_due');
+        $difference_between_tax = $request->request->get('difference_between_tax');
+        $difference_between_tax_sum = $request->request->get('difference_between_tax_sum');
+        $due_difference = $request->request->get('due_difference');
+        $conclusive_return = $request->request->get('conclusive_return');
+        $income = $request->request->get('income');
+        $krs_number = $request->request->get('krs_number');
+        $krs_amount = $request->request->get('krs_amount');
+
+        /*WRZUCANIE DO BAZY */
+        $pit37 = new PIT37();
+        $pit37 -> setUser($user);
+        $pit37 -> setUserServiceIncome($user_service_income);
+        $pit37 -> setUserContractRevenues($user_contract_revenues);
+        $pit37 -> setUserIncomeFromGraduate($user_income_from_graduate);
+        $pit37 -> setUserEmploymentIncome($user_employment_income);
+        $pit37 -> setUserPensionIncome($user_pension_income);
+        $pit37 -> setUserActivitiesPerformedIncome($user_activities_performed_income);
+        $pit37 -> setUserCopyrightIncome($user_copyright_income);
+        $pit37 -> setUserOtherIncome($user_other_income);
+        $pit37 -> setUserTotalIncome($user_total_income);
+        $pit37 -> setUserEmploymentCostIncome($user_employment_cost_income);
+
+        $pit37 -> setUserActivitiesPerformedCostIncome($user_activities_performed_cost_income);
+        $pit37 -> setUserCopyrightCostIncome($user_copyright_cost_income);
+        $pit37 -> setUserOtherCostIncome($user_other_cost_income);
+        $pit37 -> setUserTotalCostIncome($user_total_cost_income);
+
+        $pit37 -> setUserEmploymentAdvancePayment($user_employment_advance_payment);
+        $pit37 -> setUserPensionAdvancePayment($user_pension_advance_payment);
+        $pit37 -> setUserActivitiesPerformedAdvancePayment($user_activities_performed_advance_payment);
+        $pit37 -> setUserCopyrightAdvancePayment($user_copyright_advance_payment);
+        $pit37 -> setUserOtherAdvancePayment($user_other_advance_payment);
+        $pit37 -> setUserTotalAdvancePayment($user_total_advance_payment);
+
+        $pit37 -> setUserEmploymentProceeds($user_employment_proceeds);
+        $pit37 -> setUserPensionProceeds($user_pension_proceeds);
+        $pit37 -> setUserActivitesPerformedProceeds($user_activities_performed_proceeds);
+        $pit37 -> setUserCopyrightProceeds($user_copyright_proceeds);
+        $pit37 -> setUserOtherProceeds($user_other_proceeds);
+        $pit37 -> setUserOtherProceeds($user_other_proceeds);
+        $pit37 -> setUserTotalProceeds($user_total_proceeds);
+
+        $pit37 -> setUserEmploymentLoss($user_employment_loss);
+        $pit37 -> setUserActivitiesPerformedLoss($user_activities_performed_loss);
+        $pit37 -> setUserCopyrightLoss($user_copyright_loss);
+        $pit37 -> setUserOtherLoss($user_other_loss);
+        $pit37 -> setUserSocialSecurity($user_social_security);
+        $pit37 -> setUserPit0Deductions($user_pit0_deduction);
+        $pit37 -> setUserHealthInsurance(floatval($user_health_insurance));
+        $pit37 -> setUserDeduction($user_deduction);
+        $pit37 -> setUserHealthInsuranceKid(floatval($user_health_insurance_kid));
+        $pit37 -> setUserDifferenceBetween(floatval($user_difference_between));
+
+        /*MALZONEK*/
+        $pit37 -> setSpouseServiceIncome($spouse_service_income);
+        $pit37 -> setSpouseContractRevenues($spouse_contract_revenues);
+        $pit37 -> setSpouseIncomeFromGraduate($spouse_income_from_graduate);
+        $pit37 -> setSpouseEmploymentIncome($spouse_employment_income);
+        $pit37 -> setSpousePensionIncome($spouse_pension_income);
+        $pit37 -> setSpouseActivitiesPerformedIncome($spouse_activities_performed_income);
+        $pit37 -> setSpouseCopyrightIncome($spouse_copyright_income);
+        $pit37 -> setSpouseOtherIncome($spouse_other_income);
+        $pit37 -> setSpouseTotalIncome($spouse_total_income);
+        $pit37 -> setSpouseEmploymentCostIncome($spouse_employment_cost_income);
+
+        $pit37 -> setSpouseActivitiesPerformedCostIncome($spouse_activities_performed_cost_income);
+        $pit37 -> setSpouseCopyrightCostIncome($spouse_copyright_cost_income);
+        $pit37 -> setSpouseOtherCostIncome($spouse_other_cost_income);
+        $pit37 -> setSpouseTotalCostIncome($spouse_total_cost_income);
+
+        $pit37 -> setSpouseEmploymentAdvancePayment($spouse_employment_advance_payment);
+        $pit37 -> setSpousePensionAdvancePayment($spouse_pension_advance_payment);
+        $pit37 -> setSpouseActivitiesPerformedAdvancePayment($spouse_activities_performed_advance_payment);
+        $pit37 -> setSpouseCopyrightAdvancePayment($spouse_copyright_advance_payment);
+        $pit37 -> setSpouseOtherAdvancePayment($spouse_other_advance_payment);
+        $pit37 -> setSpouseTotalAdvancePayment($spouse_total_advance_payment);
+
+        $pit37 -> setSpouseEmploymentProceeds($spouse_employment_proceeds);
+        $pit37 -> setSpousePensionProceeds($spouse_pension_proceeds);
+        $pit37 -> setSpouseActivitiesPerformedProceeds($spouse_activities_performed_proceeds);
+        $pit37 -> setSpouseCopyrightProceeds($spouse_copyright_proceeds);
+        $pit37 -> setSpouseOtherProceeds($spouse_other_proceeds);
+        $pit37 -> setSpouseTotalProceeds($spouse_total_proceeds);
+
+        $pit37 -> setSpouseEmploymentLoss($spouse_employment_loss);
+        $pit37 -> setSpouseActivitiesPerformedLoss($spouse_activities_performed_loss);
+        $pit37 -> setSpouseCopyrightLoss($spouse_copyright_loss);
+        $pit37 -> setSpouseOtherLoss($spouse_other_loss);
+        $pit37 -> setSpouseSocialSecurity($spouse_social_security);
+        $pit37 -> setSpousePit0Deductions($spouse_pit0_deduction);
+        $pit37 -> setSpouseHealthInsurance(floatval($spouse_health_insurance));
+        $pit37 -> setSpouseDeduction($spouse_deduction);
+        $pit37 -> setSpouseHealthInsuranceKid(floatval($spouse_health_insurance_kid));
+        $pit37 -> setSpouseDifferenceBetween(floatval($spouse_difference_between));
+
+        /*CZESC WSPOLNA */
+        $pit37 -> setInterestRelief($interest_relief);
+        $pit37 -> setIncomeAfterDeductions($income_after_deductions);
+        $pit37 -> setHousingDeductionsFromIncome($housing_deductions_from_income);
+        $pit37 -> setBasisForTaxCalculation($basis_for_tax_calculation);
+        $pit37 -> setCalculatedTax($calculated_tax);
+        $pit37 -> setTaxAdditions($tax_additions);
+        $pit37 -> setTaxAfterDeduction($tax_after_deduction);
+        $pit37 -> setHousingDeductionsFromTax($housing_deductions_from_tax);
+        $pit37 -> setDifferenceBetweenTax($difference_between_tax);
+        $pit37 -> setDifferenceBetweenTaxSum($difference_between_tax_sum);
+        $pit37 -> setDueDifference(floatval($due_difference));
+        $pit37 -> setConclusiveReturn(floatval($conclusive_return));
+        $pit37 -> setIncome(floatval($income));
+        $pit37 -> setKrsNumber(floatval($krs_number));
+        $pit37 -> setKrsAmount(floatval($krs_amount));
+
+        $this->entityManager->persist($pit37);
+        $this->entityManager->flush();
+
+        return $this -> render('PIT/pit37.form.html.twig',[
+
+        ]);
     }
 }
