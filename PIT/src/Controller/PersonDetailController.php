@@ -9,7 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use DateTimeImmutable;
-use function PHPUnit\Framework\throwException;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Validation;
 
 class PersonDetailController extends AbstractController
 {
@@ -23,6 +27,22 @@ class PersonDetailController extends AbstractController
     #[Route(path: '/person_detail',name: 'app_person')]
     public function Person_detail(Request $request)
     {
+        $validator = Validation::createValidator();
+
+        $pesel = $request->request->get('pesel');
+
+        $violations = $validator->validate($pesel, [
+            new Regex([
+                'pattern' => '/^[0-9]{11}$/',
+                'message' => 'Numer PESEL musi składać się tylko z cyfr i mieć długość 11 znaków.'
+            ]),
+            new NotBlank(),
+            new Length([
+                'min' => 11,
+                'max' => 11,
+                'exactMessage' => 'Numer PESEL musi składać się tylko z cyfr i mieć długość 11 znaków.'
+            ])
+        ]);
 
         $user = $this->getUser();
         $name = $request->request->get('name');

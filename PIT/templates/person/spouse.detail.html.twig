@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="col-md-9 pe-5">
 
-                                        <input class="form-control" type="text" id="pesel" name="pesel" placeholder="Wprowadź PESEL"><br>
+                                        <input class="form-control" type="text" id="pesel" name="pesel" pattern="[0-9]{11}" title="Numer PESEL musi składać się tylko z cyfr i mieć długość 11 znaków." placeholder="Wprowadź PESEL" required><br>
 
                                     </div>
                                 </div>
@@ -192,4 +192,20 @@
             </div>
         </div>
     </section>
+    <script>
+        document.querySelector("#pesel").addEventListener("change", function(event) {
+            var pesel = event.target.value;
+            var peselRegex = /^[0-9]{11}$/;
+            var errorDiv = document.createElement("div");
+            errorDiv.classList.add("error");
+            errorDiv.innerText = "Numer PESEL musi składać się tylko z cyfr i mieć długość 11 znaków.";
+            if (!peselRegex.test(pesel)) {
+                document.querySelector("#pesel").after(errorDiv);
+            } else {
+                document.querySelector(".error").remove();
+            }
+        });
+
+
+    </script>
 {% endblock %}
