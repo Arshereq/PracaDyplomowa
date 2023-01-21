@@ -256,6 +256,9 @@
                 </div>
             </div>
         </div>
+        <form action="{{ path('pdf_converted') }}" target="_blank" method="post">
+            <button type="submit">Generuj PDF</button>
+        </form>
     </section>
 {#    {{ dump(lastPit37.getSpouseTotalIncome()) }}#}
 {% endblock %}
